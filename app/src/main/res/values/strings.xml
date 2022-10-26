@@ -10,4 +10,7 @@
     <string name="lokasi_label">Lokasi :</string>
     <string name="cuaca_hari_ini">Cuaca Hari Ini</string>
     <string name="cerah">Cerah,</string>
+    <string name="sungai">Sungai</string>
+    <string name="event_terdekat">Event Terdekat</string>
+    <string name="objek_wisata">Objek Wisata</string>
 </resources>

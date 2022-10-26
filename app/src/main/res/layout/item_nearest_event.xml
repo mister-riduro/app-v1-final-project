@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="311dp"
+    android:layout_height="180dp"
+    android:background="@drawable/rounded_rectangle"
+    android:layout_marginEnd="12dp"
+    android:clipToOutline="true">
+
+    <ImageView
+        android:id="@+id/event_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/festival_danau_sentarum" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/gradient_bg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/gradient_1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_event_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/plus_jakarta_sans_semibold"
+            android:lineHeight="20dp"
+            android:text="Dieng Culture Festival"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:layout_marginTop="22dp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_event_date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/gradient_bg" />
+
+        <TextView
+            android:id="@+id/tv_event_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/plus_jakarta_sans_medium"
+            android:lineHeight="16dp"
+            android:text="01-04 September"
+            android:textColor="@color/white_secondary"
+            android:textSize="12sp"
+            android:layout_marginBottom="24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/gradient_bg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
