@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/berandaFragment">
+
+    <fragment
+        android:id="@+id/berandaFragment"
+        android:name="com.example.final_project.ui.fragments.BerandaFragment"
+        android:label="BerandaFragment">
+        <action
+            android:id="@+id/action_berandaFragment_to_profilFragment"
+            app:destination="@id/profilFragment" />
+        <action
+            android:id="@+id/action_berandaFragment_to_wisataFragment"
+            app:destination="@id/wisataFragment" />
+        <action
+            android:id="@+id/action_berandaFragment_to_favoriteFragment"
+            app:destination="@id/favoriteFragment" />
+        <action
+            android:id="@+id/action_berandaFragment_to_hotelFragment"
+            app:destination="@id/hotelFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.example.final_project.ui.fragments.FavoriteFragment"
+        android:label="FavoriteFragment" >
+        <action
+            android:id="@+id/action_favoriteFragment_to_wisataFragment"
+            app:destination="@id/wisataFragment" />
+        <action
+            android:id="@+id/action_favoriteFragment_to_hotelFragment"
+            app:destination="@id/hotelFragment" />
+        <action
+            android:id="@+id/action_favoriteFragment_to_profilFragment"
+            app:destination="@id/profilFragment" />
+        <action
+            android:id="@+id/action_favoriteFragment_to_berandaFragment"
+            app:destination="@id/berandaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/hotelFragment"
+        android:name="com.example.final_project.ui.fragments.HotelFragment"
+        android:label="HotelFragment" >
+        <action
+            android:id="@+id/action_hotelFragment_to_berandaFragment"
+            app:destination="@id/berandaFragment" />
+        <action
+            android:id="@+id/action_hotelFragment_to_favoriteFragment"
+            app:destination="@id/favoriteFragment" />
+        <action
+            android:id="@+id/action_hotelFragment_to_wisataFragment"
+            app:destination="@id/wisataFragment" />
+        <action
+            android:id="@+id/action_hotelFragment_to_profilFragment"
+            app:destination="@id/profilFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profilFragment"
+        android:name="com.example.final_project.ui.fragments.ProfilFragment"
+        android:label="ProfilFragment" >
+        <action
+            android:id="@+id/action_profilFragment_to_hotelFragment"
+            app:destination="@id/hotelFragment" />
+        <action
+            android:id="@+id/action_profilFragment_to_favoriteFragment"
+            app:destination="@id/favoriteFragment" />
+        <action
+            android:id="@+id/action_profilFragment_to_wisataFragment"
+            app:destination="@id/wisataFragment" />
+        <action
+            android:id="@+id/action_profilFragment_to_berandaFragment"
+            app:destination="@id/berandaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/wisataFragment"
+        android:name="com.example.final_project.ui.fragments.WisataFragment"
+        android:label="WisataFragment" >
+        <action
+            android:id="@+id/action_wisataFragment_to_favoriteFragment"
+            app:destination="@id/favoriteFragment" />
+        <action
+            android:id="@+id/action_wisataFragment_to_hotelFragment"
+            app:destination="@id/hotelFragment" />
+        <action
+            android:id="@+id/action_wisataFragment_to_profilFragment"
+            app:destination="@id/profilFragment" />
+        <action
+            android:id="@+id/action_wisataFragment_to_berandaFragment"
+            app:destination="@id/berandaFragment" />
+    </fragment>
+</navigation>

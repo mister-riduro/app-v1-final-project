@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/berandaFragment"
+        android:title="@string/beranda"
+        android:icon="@drawable/icon_nav_beranda" />
+    <item
+        android:id="@+id/wisataFragment"
+        android:title="@string/wisata"
+        android:icon="@drawable/icon_nav_wisata"/>
+    <item
+        android:id="@+id/hotelFragment"
+        android:title="@string/hotel"
+        android:icon="@drawable/icon_nav_hotel"/>
+    <item
+        android:id="@+id/favoriteFragment"
+        android:title="@string/favorit"
+        android:icon="@drawable/icon_nav_favorit"/>
+    <item
+        android:id="@+id/profilFragment"
+        android:title="@string/profil"
+        android:icon="@drawable/icon_nav_profil"/>
+</menu>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.BerandaFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="172dp"
+        android:background="@color/brand_primary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/icon_loc"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/icon_location"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/lokasi_label_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/plus_jakarta_sans_regular"
+            android:lineHeight="20dp"
+            android:text="@string/lokasi_label"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/icon_loc"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/lokasi_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/plus_jakarta_sans_semibold"
+            android:lineHeight="20dp"
+            android:text="Surabaya"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toEndOf="@id/lokasi_label_tv"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/icon_chev_right"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/icon_chevron_right"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/rectangle"
+            app:layout_constraintTop_toBottomOf="@+id/lokasi_tv">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/today_weather_label"
+                android:text="@string/cuaca_hari_ini"
+                android:textColor="@color/text_grey_secondary"
+                android:textSize="12sp"
+                android:lineHeight="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/weather_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cerah"
+                android:fontFamily="@font/plus_jakarta_sans_bold"
+                android:textSize="16sp"
+                android:lineHeight="20dp"
+                android:textColor="@color/text_grey_primary"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/today_weather_label"/>
+
+            <TextView
+                android:id="@+id/temp_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="26°"
+                android:fontFamily="@font/plus_jakarta_sans_bold"
+                android:textSize="16sp"
+                android:lineHeight="20dp"
+                android:textColor="@color/text_grey_primary"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="4dp"
+                app:layout_constraintStart_toEndOf="@id/weather_desc"
+                app:layout_constraintTop_toBottomOf="@id/today_weather_label"/>
+
+            <ImageView
+                android:id="@+id/icon_weather_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/icon_sunrise"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

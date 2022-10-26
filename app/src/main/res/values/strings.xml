@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">final-project</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="beranda">Beranda</string>
+    <string name="wisata">Wisata</string>
+    <string name="hotel">Hotel</string>
+    <string name="favorit">Favorit</string>
+    <string name="profil">Profil</string>
+    <string name="lokasi_label">Lokasi :</string>
+    <string name="cuaca_hari_ini">Cuaca Hari Ini</string>
+    <string name="cerah">Cerah,</string>
+</resources>
