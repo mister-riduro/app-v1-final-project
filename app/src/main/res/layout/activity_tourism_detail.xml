@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activities.TourismDetailActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@+id/frame_tourism_image"
+            android:layout_width="match_parent"
+            android:layout_height="288dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <ImageView
+                android:id="@+id/image_detail_tourism"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/image_detail_tumpak_sewu"
+                android:scaleType="fitXY"/>
+
+            <LinearLayout
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:background="@drawable/circle"
+                android:gravity="center"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp">
+
+                <ImageView
+                    android:id="@+id/iv_arrow_back"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/icon_arrow_left"
+                    android:layout_gravity="center" />
+            </LinearLayout>
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tv_tourism_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/plus_jakarta_sans_bold"
+            android:text="Air Terjun Tumpak Sewu"
+            android:textSize="20sp"
+            android:textColor="@color/text_grey_primary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/frame_tourism_image" />
+
+        <TextView
+            android:id="@+id/tv_tourism_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="16dp"
+            android:text="Lumajang, Jawa Tengah"
+            android:textSize="14sp"
+            android:fontFamily="@font/plus_jakarta_sans_regular"
+            android:textColor="@color/text_grey_tertiary"
+            app:layout_constraintTop_toBottomOf="@+id/tv_tourism_name"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/frame_overview_information"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_tourism_location">
+
+            <ImageView
+                android:id="@+id/iv_rating"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/icon_rating"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4.5"
+                android:fontFamily="@font/plus_jakarta_sans_regular"
+                android:textColor="@color/text_grey_primary"
+                android:textSize="14sp"
+                android:layout_marginStart="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/iv_rating"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_separator_one"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/icon_line_separator"
+                app:layout_constraintStart_toEndOf="@id/tv_rating"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <ImageView
+                android:id="@+id/iv_type_tourism"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/icon_type_tourism"
+                android:layout_marginStart="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/iv_separator_one"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_type_tourism"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Air Terjun"
+                android:fontFamily="@font/plus_jakarta_sans_regular"
+                android:textColor="@color/text_grey_primary"
+                android:textSize="14sp"
+                android:layout_marginStart="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/iv_type_tourism"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_separator_two"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/icon_line_separator"
+                app:layout_constraintStart_toEndOf="@id/tv_type_tourism"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <ImageView
+                android:id="@+id/iv_open_hour"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/icon_open_hours"
+                android:layout_marginStart="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/iv_separator_two"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_open_hour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="08.00-17.00"
+                android:fontFamily="@font/plus_jakarta_sans_regular"
+                android:textColor="@color/text_grey_primary"
+                android:textSize="14sp"
+                android:layout_marginStart="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/iv_open_hour"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/frame_tourism_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_rectangle_outline"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@id/frame_overview_information"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <TextView
+                android:id="@+id/tv_label_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:text="Alamat"
+                android:textColor="@color/text_grey_primary"
+                android:fontFamily="@font/plus_jakarta_sans_semibold"/>
+
+            <TextView
+                android:id="@+id/tv_detail_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:lineSpacingExtra="8dp"
+                android:text="Kampung siji, Jl. Raya Sidomulyo, Besukcukit, Sidomulyo, Kec. Pronojiwo, Kabupaten Lumajang, Jawa Timur 67374"
+                android:textColor="@color/text_grey_secondary"
+                android:fontFamily="@font/plus_jakarta_sans_regular"
+                android:layout_marginTop="8dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/frame_tourism_ticket_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_rectangle_outline"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="12dp"
+            app:layout_constraintTop_toBottomOf="@id/frame_tourism_address"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <TextView
+                android:id="@+id/tv_label_ticket_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:text="Harga Tiket Masuk"
+                android:textColor="@color/text_grey_primary"
+                android:fontFamily="@font/plus_jakarta_sans_semibold"/>
+
+            <TextView
+                android:id="@+id/tv_detail_ticket_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:lineSpacingExtra="8dp"
+                android:text="Rp 10.000"
+                android:textColor="@color/text_grey_secondary"
+                android:fontFamily="@font/plus_jakarta_sans_regular"
+                android:layout_marginTop="8dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/frame_tourism_desc"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintTop_toBottomOf="@id/frame_tourism_ticket_price"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_label_tourism_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/deskripsi_objek"
+                android:fontFamily="@font/plus_jakarta_sans_semibold"
+                android:textSize="16sp"
+                android:textColor="@color/text_grey_primary"
+                android:lineSpacingExtra="8dp"/>
+
+            <TextView
+                android:id="@+id/tv_detail_tourism_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Air Terjun Tumpak Sewu atau disebut juga Coban Sewu adalah sebuah air terjun berketinggian sekitar 120 meter. Air terjun ini berbatasan dengan Kabupaten Lumajang dan Kabupaten Malang, Provinsi Jawa Timur.Air Terjun Tumpak Sewu memiliki aliran air yang menyerupai tirai sehingga termasuk dalam tipe air terjun Tiered. Lokasi Air Terjun Tumpak Sewu ada di dalam sebuah lembah curam memanjang dengan elevasi 500 meter di atas permukaan air laut. Air Terjun Tumpak Sewu terbentuk di aliran Sungai Glidih yang berhulu di Gunung Semeru."
+                android:fontFamily="@font/plus_jakarta_sans_regular"
+                android:textSize="14sp"
+                android:textColor="@color/text_grey_secondary"
+                android:lineSpacingExtra="8dp"
+                android:layout_marginTop="8dp"
+                android:maxLines="4"/>
+
+            <TextView
+                android:id="@+id/tv_see_more_tourism_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans_semibold"
+                android:textSize="14sp"
+                android:text="@string/lihat_selengkapnya"
+                android:textColor="@color/brand_primary"
+                android:layout_marginTop="16dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/frame_tourism_facilities"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintTop_toBottomOf="@id/frame_tourism_desc"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_label_tourism_facilities"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/fasilitas"
+                android:fontFamily="@font/plus_jakarta_sans_semibold"
+                android:textSize="16sp"
+                android:textColor="@color/text_grey_primary"
+                android:lineSpacingExtra="8dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_tourism_facilities"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"/>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+

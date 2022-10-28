@@ -13,4 +13,13 @@
     <string name="sungai">Sungai</string>
     <string name="event_terdekat">Event Terdekat</string>
     <string name="objek_wisata">Objek Wisata</string>
+    <string name="cari_objek_wisata">Cari Objek Wisata</string>
+    <string name="festival_budaya">Festival Budaya</string>
+    <string name="kunjungi_web">Kunjungi Web</string>
+    <string name="tentang_event">Tentang Event</string>
+    <string name="dummy_text">Lorem ipsum dolor sit amet</string>
+    <string name="annotation_visit_web">Silakan kunjungi website untuk melihat harga tiket yang tersedia.</string>
+    <string name="deskripsi_objek">Deskripsi Objek</string>
+    <string name="lihat_selengkapnya">Lihat Selengkapnya</string>
+    <string name="fasilitas">Fasilitas</string>
 </resources>

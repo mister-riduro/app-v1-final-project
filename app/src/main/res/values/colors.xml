@@ -14,4 +14,6 @@
     <color name="background_grey">#F4F4F4</color>
     <color name="text_grey_primary">#1A1A1A</color>
     <color name="text_grey_secondary">#625F5F</color>
+    <color name="text_grey_tertiary">#989A90</color>
+    <color name="stroke">#E7E7E7</color>
 </resources>
