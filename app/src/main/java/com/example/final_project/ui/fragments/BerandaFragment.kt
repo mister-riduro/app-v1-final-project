@@ -1,5 +1,6 @@
 package com.example.final_project.ui.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,10 +10,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.final_project.adapters.*
 import com.example.final_project.databinding.FragmentBerandaBinding
-import com.example.final_project.models.MenuTourism
-import com.example.final_project.models.MenuTourismObjects
-import com.example.final_project.models.NearestEvent
-import com.example.final_project.models.NearestEventObjects
+import com.example.final_project.models.*
+import com.example.final_project.ui.activities.ActivityEventDetail
+import com.example.final_project.ui.activities.TourismDetailActivity
 
 
 class BerandaFragment : Fragment() {
@@ -43,7 +43,6 @@ class BerandaFragment : Fragment() {
 
         //rv tourism menu
         _binding!!.rvTourismMenu.layoutManager = layoutManagerOne
-
         menuTourism.addAll(MenuTourismObjects.menus_object)
 
         menuTourismAdapter = MenuTourismAdapter(menuTourism)
@@ -56,5 +55,13 @@ class BerandaFragment : Fragment() {
 
         nearestEventAdapter = NearestEventAdapter(nearestEvent)
         _binding!!.rvNearestEvent.adapter = nearestEventAdapter
+
+        //nearest tourism
+        _binding!!.frameNearestTourism.setOnClickListener{
+            val intent = Intent(it.context, TourismDetailActivity::class.java)
+
+            intent.putExtra("tourism_detail", DetailTourismObjects.detail_tourism_objects.first())
+            startActivity(intent)
+        }
     }
 }
