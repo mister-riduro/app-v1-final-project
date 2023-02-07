@@ -24,4 +24,11 @@
     <string name="fasilitas">Fasilitas</string>
     <string name="cara_menuju_ke_tempat_wisata">Cara Menuju ke Tempat Wisata</string>
     <string name="rute_dan_transportasi">Rute dan Transportasi</string>
+    <string name="how_to_route">Cara Menuju Tempat Wisata</string>
+    <string name="waktu_tempuh">Waktu Tempuh</string>
+    <string name="danau">Danau</string>
+    <string name="pantai">Pantai</string>
+    <string name="gua">Gua</string>
+    <string name="air_terjun">Air Terjun</string>
+    <string name="taman_national">Taman National</string>
 </resources>

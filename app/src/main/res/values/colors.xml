@@ -10,6 +10,7 @@
 
 
     <color name="brand_primary">#0974FC</color>
+    <color name="brand_primary_darker">#194996</color>
     <color name="white_secondary">#E4DDDD</color>
     <color name="background_grey">#F4F4F4</color>
     <color name="text_grey_primary">#1A1A1A</color>

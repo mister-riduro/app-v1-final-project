@@ -8,4 +8,10 @@ object TourismFacilitiesObjects {
         TourismFacilities("Toilet Umum"),
         TourismFacilities("Wahana Bermain"),
     )
+
+    val tourism_facilities_pantai = listOf(
+        TourismFacilities("Persewaan Peralatan Snorkeling"),
+        TourismFacilities("Tour Guide"),
+        TourismFacilities("Area Parkir")
+    )
 }

@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.final_project.databinding.ItemNearestEventBinding
 import com.example.final_project.models.NearestEvent
-import com.example.final_project.ui.activities.ActivityEventDetail
+import com.example.final_project.ui.activities.EventDetailActivity
 
 class NearestEventAdapter(private val nearest_event: ArrayList<NearestEvent>): RecyclerView.Adapter<NearestEventAdapter.NearesEventViewHolder>() {
     inner class NearesEventViewHolder(val binding: ItemNearestEventBinding): RecyclerView.ViewHolder(binding.root)
@@ -25,14 +25,14 @@ class NearestEventAdapter(private val nearest_event: ArrayList<NearestEvent>): R
                 binding.tvEventDate.text = this.event_date
 
                 holder.itemView.setOnClickListener {
-                    val intent = Intent(it.context, ActivityEventDetail::class.java)
+                    val intent = Intent(it.context, EventDetailActivity::class.java)
 
-                    intent.putExtra(ActivityEventDetail.EXTRA_NAME, this.event_name)
-                    intent.putExtra(ActivityEventDetail.EXTRA_DATE, this.event_date)
-                    intent.putExtra(ActivityEventDetail.EXTRA_LOCATION, this.event_loc)
-                    intent.putExtra(ActivityEventDetail.EXTRA_DESC, this.event_desc)
-                    intent.putExtra(ActivityEventDetail.EXTRA_TYPE, this.event_type)
-                    intent.putExtra(ActivityEventDetail.EXTRA_BG, this.background)
+                    intent.putExtra(EventDetailActivity.EXTRA_NAME, this.event_name)
+                    intent.putExtra(EventDetailActivity.EXTRA_DATE, this.event_date)
+                    intent.putExtra(EventDetailActivity.EXTRA_LOCATION, this.event_loc)
+                    intent.putExtra(EventDetailActivity.EXTRA_DESC, this.event_desc)
+                    intent.putExtra(EventDetailActivity.EXTRA_TYPE, this.event_type)
+                    intent.putExtra(EventDetailActivity.EXTRA_BG, this.background)
 
                     it.context.startActivity(intent)
                 }

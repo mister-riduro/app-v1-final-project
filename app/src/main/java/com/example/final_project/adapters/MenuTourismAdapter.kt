@@ -20,6 +20,10 @@ class MenuTourismAdapter(private val menu_tourism: ArrayList<MenuTourism>): Recy
             with(menu_tourism[position]) {
                 Glide.with(itemView.context).load(this.image).into(binding.menuIllustration)
                 binding.menuLabel.text = this.title
+
+                holder.itemView.setOnClickListener {
+
+                }
             }
         }
     }

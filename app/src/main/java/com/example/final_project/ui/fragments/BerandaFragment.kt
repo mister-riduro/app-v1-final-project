@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.final_project.adapters.*
 import com.example.final_project.databinding.FragmentBerandaBinding
 import com.example.final_project.models.*
-import com.example.final_project.ui.activities.ActivityEventDetail
 import com.example.final_project.ui.activities.TourismDetailActivity
 
 

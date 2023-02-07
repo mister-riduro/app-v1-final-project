@@ -3,20 +3,28 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/College/final-project/app-v1/app/src/main/res/drawable/background_dialog.xml" value="0.4" />
         <entry key="..\:/College/final-project/app-v1/app/src/main/res/drawable/circle.xml" value="0.217" />
         <entry key="..\:/College/final-project/app-v1/app/src/main/res/drawable/icon_location.xml" value="0.2015" />
         <entry key="..\:/College/final-project/app-v1/app/src/main/res/drawable/rectangle.xml" value="0.2015" />
+        <entry key="..\:/College/final-project/app-v1/app/src/main/res/drawable/rectangle_gradient.xml" value="0.176" />
         <entry key="..\:/College/final-project/app-v1/app/src/main/res/drawable/rectangle_outline.xml" value="0.173" />
         <entry key="..\:/College/final-project/app-v1/app/src/main/res/drawable/rounded_rectangle.xml" value="0.174" />
         <entry key="..\:/College/final-project/app-v1/app/src/main/res/drawable/rounded_rectangle_outline.xml" value="0.173" />
+        <entry key="..\:/College/final-project/app-v1/app/src/main/res/layout/activity_area_based_tourism.xml" value="0.25" />
         <entry key="..\:/College/final-project/app-v1/app/src/main/res/layout/activity_event_detail.xml" value="0.176" />
         <entry key="..\:/College/final-project/app-v1/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/College/final-project/app-v1/app/src/main/res/layout/activity_tourism_detail.xml" value="0.264" />
-        <entry key="..\:/College/final-project/app-v1/app/src/main/res/layout/fragment_beranda.xml" value="0.2" />
-        <entry key="..\:/College/final-project/app-v1/app/src/main/res/layout/fragment_favorite.xml" value="0.16168478260869565" />
+        <entry key="..\:/College/final-project/app-v1/app/src/main/res/layout/dialog_tourism_desc.xml" value="0.4" />
+        <entry key="..\:/College/final-project/app-v1/app/src/main/res/layout/dialog_tourism_route_information.xml" value="0.4" />
+        <entry key="..\:/College/final-project/app-v1/app/src/main/res/layout/fragment_beranda.xml" value="0.264" />
+        <entry key="..\:/College/final-project/app-v1/app/src/main/res/layout/fragment_favorite.xml" value="0.1" />
+        <entry key="..\:/College/final-project/app-v1/app/src/main/res/layout/fragment_favorite_hotel.xml" value="0.1" />
         <entry key="..\:/College/final-project/app-v1/app/src/main/res/layout/fragment_hotel.xml" value="0.16168478260869565" />
-        <entry key="..\:/College/final-project/app-v1/app/src/main/res/layout/fragment_profil.xml" value="0.16168478260869565" />
+        <entry key="..\:/College/final-project/app-v1/app/src/main/res/layout/fragment_profil.xml" value="0.2" />
         <entry key="..\:/College/final-project/app-v1/app/src/main/res/layout/fragment_wisata.xml" value="0.264" />
+        <entry key="..\:/College/final-project/app-v1/app/src/main/res/layout/item_area_based_tourism.xml" value="0.4" />
+        <entry key="..\:/College/final-project/app-v1/app/src/main/res/layout/item_favorite_tab.xml" value="0.24895833333333334" />
         <entry key="..\:/College/final-project/app-v1/app/src/main/res/layout/item_nearest_event.xml" value="0.1" />
         <entry key="..\:/College/final-project/app-v1/app/src/main/res/layout/item_tourism_area.xml" value="0.2" />
         <entry key="..\:/College/final-project/app-v1/app/src/main/res/layout/item_tourism_facilities.xml" value="0.8" />

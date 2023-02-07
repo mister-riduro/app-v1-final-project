@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class DetailTourism(
+data class FavoriteTourism(
     val tourismID: Long,
     val createdAt: String,
     val updatedAt: String? = null,

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="16dp"
+    android:background="@drawable/rounded_rectangle"
+    android:clipToOutline="true"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/iv_thumbnail_hotel"
+        android:layout_width="match_parent"
+        android:layout_height="104dp"/>
+
+    <TextView
+        app:layout_constraintTop_toBottomOf="@id/iv_thumbnail_hotel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginTop="8dp"
+        android:id="@+id/tv_name_hotel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/plus_jakarta_sans_semibold"
+        android:textColor="@color/text_grey_primary"
+        android:textSize="14sp"
+        android:lineHeight="20sp"
+        android:text="Hotel A"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_loc_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_name_hotel"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp">
+
+        <ImageView
+            android:id="@+id/iv_icon_location"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:src="@drawable/icon_location_grey"/>
+
+        <TextView
+            android:id="@+id/tv_hotel_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_icon_location"
+            android:layout_marginStart="4dp"
+            android:text="Setiabudi, Bandung"
+            android:textSize="12sp"
+            android:lineSpacingExtra="4sp"
+            android:fontFamily="@font/plus_jakarta_sans_regular"
+            android:textColor="@color/text_grey_tertiary"/>
+
+        <TextView
+            android:id="@+id/tv_dot_symbol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_hotel_location"
+            android:layout_marginStart="8dp"
+            android:text="•"
+            android:textSize="12sp"
+            android:lineSpacingExtra="4sp"
+            android:fontFamily="@font/plus_jakarta_sans_regular"
+            android:textColor="@color/text_grey_tertiary"/>
+
+        <TextView
+            android:id="@+id/tv_property_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_dot_symbol"
+            android:layout_marginStart="8dp"
+            android:text="Hotel"
+            android:textSize="12sp"
+            android:lineSpacingExtra="4sp"
+            android:fontFamily="@font/plus_jakarta_sans_regular"
+            android:textColor="@color/text_grey_tertiary"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_hotel_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_loc_type"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:id="@+id/tv_prefix_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="Rp"
+            android:textSize="16sp"
+            android:lineSpacingExtra="4sp"
+            android:fontFamily="@font/plus_jakarta_sans_bold"
+            android:textColor="@color/text_grey_primary" />
+        <TextView
+            android:id="@+id/tv_hotel_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_prefix_price"
+            android:layout_marginStart="4dp"
+            android:text="1.800.000"
+            android:textSize="16sp"
+            android:lineSpacingExtra="4sp"
+            android:fontFamily="@font/plus_jakarta_sans_bold"
+            android:textColor="@color/text_grey_primary"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
