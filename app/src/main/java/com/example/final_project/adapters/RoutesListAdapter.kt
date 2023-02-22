@@ -4,9 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.final_project.databinding.ItemRoutesBinding
-import com.example.final_project.models.OneRoutes
+import com.example.final_project.models.Routes
 
-class RoutesListAdapter(private val routes: ArrayList<OneRoutes>): RecyclerView.Adapter<RoutesListAdapter.RoutesListViewHolder>() {
+class RoutesListAdapter(private val routes: ArrayList<Routes>): RecyclerView.Adapter<RoutesListAdapter.RoutesListViewHolder>() {
     inner class RoutesListViewHolder(val binding: ItemRoutesBinding): RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RoutesListViewHolder {

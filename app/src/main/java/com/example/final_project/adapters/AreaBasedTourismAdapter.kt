@@ -7,8 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.final_project.databinding.ItemAreaBasedTourismBinding
 import com.example.final_project.models.DetailTourism
-import com.example.final_project.models.DetailTourismObjects
-import com.example.final_project.ui.activities.TourismDetailActivity
+import com.example.final_project.ui.activities.DetailTourismActivity
 
 class AreaBasedTourismAdapter(private val detail_tourism: ArrayList<DetailTourism>):RecyclerView.Adapter<AreaBasedTourismAdapter.AreaBasedTourismViewHolder>() {
     inner class AreaBasedTourismViewHolder(val binding: ItemAreaBasedTourismBinding): RecyclerView.ViewHolder(binding.root)
@@ -28,9 +27,9 @@ class AreaBasedTourismAdapter(private val detail_tourism: ArrayList<DetailTouris
                 binding.tvAbRating.text = this.tourismRating.toString()
 
                 holder.itemView.setOnClickListener {
-                    val intent = Intent(it.context, TourismDetailActivity::class.java)
+                    val intent = Intent(it.context, DetailTourismActivity::class.java)
 
-                    intent.putExtra("tourism_detail", DetailTourismObjects.detail_tourism_objects[position])
+//                    intent.putExtra("tourism_detail", DetailTourismObjects.detail_tourism_objects[position])
                     it.context.startActivity(intent)
                 }
             }

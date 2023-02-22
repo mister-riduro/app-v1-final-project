@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class OneRoutes(
+data class Routes(
     val routesID: Long,
     val createdAt: String,
     val updatedAt: String? = null,

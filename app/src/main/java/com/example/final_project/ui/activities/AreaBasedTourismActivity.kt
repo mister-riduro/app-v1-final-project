@@ -8,7 +8,7 @@ import com.example.final_project.R
 import com.example.final_project.adapters.AreaBasedTourismAdapter
 import com.example.final_project.databinding.ActivityAreaBasedTourismBinding
 import com.example.final_project.models.DetailTourism
-import com.example.final_project.models.DetailTourismObjects
+import com.example.final_project.models.`object`.DetailTourismObjects
 
 class AreaBasedTourismActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAreaBasedTourismBinding
@@ -26,7 +26,7 @@ class AreaBasedTourismActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(this, 2)
-        detailTourism.addAll(DetailTourismObjects.detail_tourism_objects)
+//        detailTourism.addAll(DetailTourismObjects.detail_tourism_objects)
         binding.rvAreaBasedTourism.layoutManager = layoutManager
         areaBasedTourismAdapter = AreaBasedTourismAdapter(detailTourism)
         binding.rvAreaBasedTourism.adapter = areaBasedTourismAdapter

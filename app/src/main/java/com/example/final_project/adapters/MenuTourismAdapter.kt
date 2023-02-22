@@ -1,11 +1,14 @@
 package com.example.final_project.adapters
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.final_project.databinding.ItemTourismMenuBinding
 import com.example.final_project.models.MenuTourism
+import com.example.final_project.ui.activities.DetailTourismActivity
+import com.example.final_project.ui.activities.TypeBasedTourismActivity
 
 class MenuTourismAdapter(private val menu_tourism: ArrayList<MenuTourism>): RecyclerView.Adapter<MenuTourismAdapter.MenuViewHolder>() {
     inner class MenuViewHolder(val binding: ItemTourismMenuBinding): RecyclerView.ViewHolder(binding.root)
@@ -22,7 +25,10 @@ class MenuTourismAdapter(private val menu_tourism: ArrayList<MenuTourism>): Recy
                 binding.menuLabel.text = this.title
 
                 holder.itemView.setOnClickListener {
+                    val intent = Intent(it.context, TypeBasedTourismActivity::class.java)
 
+                    intent.putExtra("tourismType", this.title)
+                    it.context.startActivity(intent)
                 }
             }
         }

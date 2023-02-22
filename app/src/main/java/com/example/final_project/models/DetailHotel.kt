@@ -20,5 +20,5 @@ data class DetailHotel(
     val cluster: Long,
     val hotelImage: String,
     val hotelName: String,
-    val facilities: List<Long>
+    val facilities: List<HotelFacilities>
 ) : Parcelable

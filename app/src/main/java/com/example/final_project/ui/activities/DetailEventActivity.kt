@@ -5,7 +5,7 @@ import android.os.Bundle
 import com.example.final_project.R
 import com.example.final_project.databinding.ActivityEventDetailBinding
 
-class EventDetailActivity : AppCompatActivity() {
+class DetailEventActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEventDetailBinding
 
     companion object {

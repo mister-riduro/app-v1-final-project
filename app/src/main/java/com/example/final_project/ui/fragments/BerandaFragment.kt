@@ -11,9 +11,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.final_project.adapters.*
 import com.example.final_project.databinding.FragmentBerandaBinding
 import com.example.final_project.models.*
-import com.example.final_project.ui.activities.TourismDetailActivity
+import com.example.final_project.models.`object`.DetailTourismObjects
+import com.example.final_project.models.`object`.MenuTourismObjects
+import com.example.final_project.models.`object`.NearestEventObjects
+import com.example.final_project.ui.activities.DetailTourismActivity
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class BerandaFragment : Fragment() {
     private var _binding: FragmentBerandaBinding? = null
     private val binding get() = _binding
@@ -23,7 +27,7 @@ class BerandaFragment : Fragment() {
     private var menuTourism: ArrayList<MenuTourism> = arrayListOf()
 
     //nearest event
-    private lateinit var nearestEventAdapter: NearestEventAdapter
+//    private lateinit var nearestEventAdapter: NearestEventAdapter
     private var nearestEvent: ArrayList<NearestEvent> = arrayListOf()
 
     override fun onCreateView(
@@ -50,16 +54,16 @@ class BerandaFragment : Fragment() {
         //rv nearest event
         _binding!!.rvNearestEvent.layoutManager = layoutManagerTwo
 
-        nearestEvent.addAll(NearestEventObjects.nearest_events)
+//        nearestEvent.addAll(NearestEventObjects.nearest_events)
 
-        nearestEventAdapter = NearestEventAdapter(nearestEvent)
-        _binding!!.rvNearestEvent.adapter = nearestEventAdapter
+//        nearestEventAdapter = NearestEventAdapter(nearestEvent)
+//        _binding!!.rvNearestEvent.adapter = nearestEventAdapter
 
         //nearest tourism
         _binding!!.frameNearestTourism.setOnClickListener{
-            val intent = Intent(it.context, TourismDetailActivity::class.java)
+            val intent = Intent(it.context, DetailTourismActivity::class.java)
 
-            intent.putExtra("tourism_detail", DetailTourismObjects.detail_tourism_objects.first())
+//            intent.putExtra("tourism_detail", DetailTourismObjects.detail_tourism_objects.first())
             startActivity(intent)
         }
     }

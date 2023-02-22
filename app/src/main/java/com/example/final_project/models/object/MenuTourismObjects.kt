@@ -1,6 +1,7 @@
-package com.example.final_project.models
+package com.example.final_project.models.`object`
 
 import com.example.final_project.R
+import com.example.final_project.models.MenuTourism
 
 object MenuTourismObjects {
 

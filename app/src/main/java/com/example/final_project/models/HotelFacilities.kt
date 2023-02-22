@@ -4,9 +4,10 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class TourismFacilities(
-    val tfacilitiesID: Long,
+data class HotelFacilities(
+    val hfacilitiesId: Long,
     val createdAt: String,
     val updatedAt: String? = null,
-    val facilitiesName: String
-): Parcelable
+    val facilitiesName: String,
+    val facilitiesImage: String
+) : Parcelable

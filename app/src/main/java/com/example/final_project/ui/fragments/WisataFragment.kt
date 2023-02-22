@@ -9,15 +9,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.final_project.adapters.TourismAreaAdapter
 import com.example.final_project.databinding.FragmentWisataBinding
-import com.example.final_project.models.TourismArea
-import com.example.final_project.models.TourismAreaObjects
+import com.example.final_project.models.Province
+import com.example.final_project.models.`object`.TourismAreaObjects
 
 class WisataFragment : Fragment() {
     private var _binding:FragmentWisataBinding? = null
     private val binding get() = _binding
 
     private lateinit var tourismAreaAdapter: TourismAreaAdapter
-    private var areaTourism: ArrayList<TourismArea> = arrayListOf()
+    private var areaTourism: ArrayList<Province> = arrayListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,7 +38,7 @@ class WisataFragment : Fragment() {
 
         _binding!!.rvTourismArea.layoutManager = layoutManager
 
-        areaTourism.addAll(TourismAreaObjects.tourism_area)
+//        areaTourism.addAll(TourismAreaObjects.tourism_area)
 
         tourismAreaAdapter = TourismAreaAdapter(areaTourism)
         _binding!!.rvTourismArea.adapter = tourismAreaAdapter
