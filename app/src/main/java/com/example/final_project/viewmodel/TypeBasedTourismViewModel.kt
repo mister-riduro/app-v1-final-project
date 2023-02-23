@@ -2,27 +2,34 @@ package com.example.final_project.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.final_project.models.DetailTourism
-import com.example.final_project.remote.network.NetworkResult
+import com.example.final_project.models.dto.DetailTourismResponse
 import com.example.final_project.remote.repository.Repository
-import dagger.hilt.android.lifecycle.HiltViewModel
+import com.example.final_project.util.Resource
 import kotlinx.coroutines.launch
-import javax.inject.Inject
+import retrofit2.Response
 
-@HiltViewModel
-class TypeBasedTourismViewModel @Inject constructor(
+class TypeBasedTourismViewModel (
     private val repository: Repository,
-    application: Application
+    application: Application,
+    private val tourismType: String
 ) : AndroidViewModel(application) {
-    private val _tourismLiveData: MutableLiveData<NetworkResult<List<DetailTourism>>> = MutableLiveData()
-    val tourismLiveData: LiveData<NetworkResult<List<DetailTourism>>> = _tourismLiveData
+    val _tourismLiveData: MutableLiveData<Resource<DetailTourismResponse>> = MutableLiveData()
+    val fieldFilter: String = "*.*,routes.routes_id_routes_id,facilities.tfacilities_tfacilities_id.*"
+    fun getTourismByType(tourismType: String) = viewModelScope.launch {
+        _tourismLiveData.postValue(Resource.Loading())
+        val resp = repository.getTourismByType(fieldFilter, tourismType)
+        _tourismLiveData.postValue(handleTourismByTypeResponse(resp))
+    }
 
-    fun fetchTourismResponse(tourismType: String) = viewModelScope.launch {
-        repository.getTourismByType(tourismType).collect { values ->
-            _tourismLiveData.value = values
+    private fun handleTourismByTypeResponse(response: Response<DetailTourismResponse>): Resource<DetailTourismResponse> {
+        if (response.isSuccessful) {
+            response.body()?.let { resultResponse ->
+                return Resource.Success(resultResponse)
+            }
         }
+
+        return Resource.Error(response.message())
     }
 }

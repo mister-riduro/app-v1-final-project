@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.final_project.R
-import com.example.final_project.adapters.AreaBasedTourismAdapter
+//import com.example.final_project.adapters.AreaBasedTourismAdapter
 import com.example.final_project.databinding.ActivityAreaBasedTourismBinding
 import com.example.final_project.models.DetailTourism
 import com.example.final_project.models.`object`.DetailTourismObjects
@@ -13,7 +13,7 @@ import com.example.final_project.models.`object`.DetailTourismObjects
 class AreaBasedTourismActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAreaBasedTourismBinding
 
-    private lateinit var areaBasedTourismAdapter: AreaBasedTourismAdapter
+//    private lateinit var areaBasedTourismAdapter: AreaBasedTourismAdapter
     private var detailTourism: ArrayList<DetailTourism> = arrayListOf()
 
     companion object {
@@ -27,9 +27,9 @@ class AreaBasedTourismActivity : AppCompatActivity() {
 
         val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(this, 2)
 //        detailTourism.addAll(DetailTourismObjects.detail_tourism_objects)
-        binding.rvAreaBasedTourism.layoutManager = layoutManager
-        areaBasedTourismAdapter = AreaBasedTourismAdapter(detailTourism)
-        binding.rvAreaBasedTourism.adapter = areaBasedTourismAdapter
+//        binding.rvAreaBasedTourism.layoutManager = layoutManager
+//        areaBasedTourismAdapter = AreaBasedTourismAdapter(detailTourism)
+//        binding.rvAreaBasedTourism.adapter = areaBasedTourismAdapter
 
 
         val area = intent.getStringExtra(EXTRA_NAME).toString()

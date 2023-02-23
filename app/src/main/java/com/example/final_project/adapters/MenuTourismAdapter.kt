@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.final_project.databinding.ItemTourismMenuBinding
 import com.example.final_project.models.MenuTourism
-import com.example.final_project.ui.activities.DetailTourismActivity
 import com.example.final_project.ui.activities.TypeBasedTourismActivity
 
 class MenuTourismAdapter(private val menu_tourism: ArrayList<MenuTourism>): RecyclerView.Adapter<MenuTourismAdapter.MenuViewHolder>() {
