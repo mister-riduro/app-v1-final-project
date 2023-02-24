@@ -1,16 +1,16 @@
-package com.example.final_project.viewmodel
+package com.example.final_project.ui.activities.detailTourism
 
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.final_project.remote.repository.Repository
 
-class TypeBasedTourismViewModelFactory(
+class DetailTourismViewModelFactory(
     private val repository: Repository,
     val app: Application,
-    val tourismType: String): ViewModelProvider.Factory {
+    val tourismID: Long): ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return TypeBasedTourismViewModel(repository, app, tourismType) as T
+        return DetailTourismViewModel(repository, app, tourismID) as T
     }
 }

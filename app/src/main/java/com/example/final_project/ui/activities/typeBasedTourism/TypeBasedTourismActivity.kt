@@ -1,4 +1,4 @@
-package com.example.final_project.ui.activities
+package com.example.final_project.ui.activities.typeBasedTourism
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,21 +6,15 @@ import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.final_project.adapters.TypeBasedTourismAdapter
 import com.example.final_project.databinding.ActivityTypeBasedTourismBinding
-import com.example.final_project.models.DetailTourism
 import com.example.final_project.remote.repository.Repository
 import com.example.final_project.util.Resource
-import com.example.final_project.viewmodel.TypeBasedTourismViewModel
-import com.example.final_project.viewmodel.TypeBasedTourismViewModelFactory
 
 class TypeBasedTourismActivity : AppCompatActivity() {
     private lateinit var binding: ActivityTypeBasedTourismBinding
     private lateinit var typeBasedTourismViewModel: TypeBasedTourismViewModel
 
-//    private var detailTourism: ArrayList<DetailTourism> = arrayListOf()
     private lateinit var typeBasedTourismAdapter: TypeBasedTourismAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +29,8 @@ class TypeBasedTourismActivity : AppCompatActivity() {
         val repository = Repository()
         val typeBasedTourismViewModelFactory = TypeBasedTourismViewModelFactory(repository, application, payload.toString())
 
-        typeBasedTourismViewModel = ViewModelProvider(this, typeBasedTourismViewModelFactory).get(TypeBasedTourismViewModel::class.java)
+        typeBasedTourismViewModel = ViewModelProvider(this, typeBasedTourismViewModelFactory).get(
+            TypeBasedTourismViewModel::class.java)
         typeBasedTourismViewModel.getTourismByType(payload.toString())
         setupRecyclerView()
 
@@ -43,7 +38,7 @@ class TypeBasedTourismActivity : AppCompatActivity() {
             when(response) {
                 is Resource.Success -> {
                     response.data?.let { tourismResponse ->
-                        typeBasedTourismAdapter.differ.submitList(tourismResponse.detailTourism)
+                        typeBasedTourismAdapter.differ.submitList(tourismResponse.data)
                     }
                 }
                 is Resource.Loading -> {

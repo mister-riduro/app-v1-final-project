@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.final_project.databinding.ItemTypeBasedTourismBinding
 import com.example.final_project.models.DetailTourism
 import com.example.final_project.models.dto.DetailTourismResponse
+import com.example.final_project.ui.activities.DetailTourismActivity
 import com.squareup.picasso.Picasso
 
 class TypeBasedTourismAdapter: RecyclerView.Adapter<TypeBasedTourismAdapter.TypeBasedTourismViewHolder>() {
@@ -46,10 +47,10 @@ class TypeBasedTourismAdapter: RecyclerView.Adapter<TypeBasedTourismAdapter.Type
             binding.tvAbRating.text = tourism.tourismRating.toString()
 
             setOnClickListener {
-//                val intent = Intent(it.context, DetailTourismActivity::class.java)
-//
-//                intent.putExtra("tourismID", tourism.tourismID)
-//                it.context.startActivity(intent)
+                val intent = Intent(it.context, DetailTourismActivity::class.java)
+
+                intent.putExtra("tourismID", tourism.tourismID)
+                it.context.startActivity(intent)
             }
         }
     }

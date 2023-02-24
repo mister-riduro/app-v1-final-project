@@ -13,9 +13,10 @@ interface ApiService {
     suspend fun getFavoriteTourism(
         @Path("user_id") user_id: String):Response<List<FavoriteTourism>>
 
-    @GET("/items/tourisms/{tourism_id}?fields=*.*,routes.routes_id_routes_id,facilities.tfacilities_tfacilities_id.*")
+    @GET("/items/tourisms/{tourism_id}")
     suspend fun getDetailTourism(
-        @Path("tourism_id") tourism_id: Long): Response<DetailTourism>
+        @Path("tourism_id") tourism_id: Long,
+        @Query("fields") fields: String = "*.*,routes.routes_id_routes_id,facilities.tfacilities_tfacilities_id.*"): Response<DetailTourism>
 
     @GET("/items/tourisms")
     suspend fun getTourismByType(

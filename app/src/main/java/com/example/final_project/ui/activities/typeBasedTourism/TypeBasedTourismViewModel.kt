@@ -1,4 +1,4 @@
-package com.example.final_project.viewmodel
+package com.example.final_project.ui.activities.typeBasedTourism
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
