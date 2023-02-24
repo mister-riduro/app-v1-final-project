@@ -43,7 +43,7 @@ class TypeBasedTourismActivity : AppCompatActivity() {
             when(response) {
                 is Resource.Success -> {
                     response.data?.let { tourismResponse ->
-                        typeBasedTourismAdapter.differ.submitList(tourismResponse.detailTourism)
+                        typeBasedTourismAdapter.differ.submitList(tourismResponse.data)
                     }
                 }
                 is Resource.Loading -> {
