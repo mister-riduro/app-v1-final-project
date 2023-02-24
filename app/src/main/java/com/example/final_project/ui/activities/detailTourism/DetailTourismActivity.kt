@@ -3,28 +3,35 @@ package com.example.final_project.ui.activities
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.get
 import com.example.final_project.R
 import com.example.final_project.databinding.ActivityTourismDetailBinding
-import com.example.final_project.models.DetailTourism
 import com.example.final_project.models.dto.TourismFacilitiesResponse
-import com.example.final_project.remote.network.NetworkResult
-import com.example.final_project.viewmodel.DetailTourismViewModel
+import com.example.final_project.remote.repository.Repository
+import com.example.final_project.ui.activities.detailTourism.DetailTourismViewModel
+import com.example.final_project.ui.activities.detailTourism.DetailTourismViewModelFactory
+import com.example.final_project.util.Resource
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.chip.Chip
 
 class DetailTourismActivity : AppCompatActivity() {
     private lateinit var binding: ActivityTourismDetailBinding
-    private val detailTourismViewModel by viewModels<DetailTourismViewModel>()
+    private lateinit var detailTourismViewModel: DetailTourismViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityTourismDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val payload = intent.getParcelableExtra<DetailTourism>("tourismID")!!
+        val repository = Repository()
+        val payload = intent.getLongExtra("tourismID", 1)
+        val detailTourismViewModelFactory = DetailTourismViewModelFactory(repository, application,  payload)
 
-        fetchData(payload.tourismID)
+        detailTourismViewModel = ViewModelProvider(this, detailTourismViewModelFactory).get(
+            DetailTourismViewModel::class.java)
+
+        fetchData(payload)
         supportActionBar?.hide()
 
         binding.ivArrowBack.setOnClickListener {
@@ -33,10 +40,10 @@ class DetailTourismActivity : AppCompatActivity() {
     }
 
     private fun fetchData(tourismID: Long) {
-        detailTourismViewModel.fetchTourismResponse(tourismID)
-        detailTourismViewModel.tourismLiveData.observe(this) { response ->
+        detailTourismViewModel.getDetailTourism(tourismID)
+        detailTourismViewModel._tourismLiveData.observe(this) { response ->
             when (response) {
-                is NetworkResult.Success -> {
+                is Resource.Success -> {
                     binding.tvDetailAddress.text = response.data?.tourismAddress
                     binding.tvTypeTourism.text = response.data?.tourismType
                     binding.tvTourismLocation.text = response.data?.tourismCity
@@ -59,10 +66,10 @@ class DetailTourismActivity : AppCompatActivity() {
 
                     createFacilities(response.data?.facilities)
                 }
-                is NetworkResult.Error -> {
+                is Resource.Error -> {
                     // show error message
                 }
-                is NetworkResult.Loading -> {
+                is Resource.Loading -> {
                     // show a progress bar
                 }
             }

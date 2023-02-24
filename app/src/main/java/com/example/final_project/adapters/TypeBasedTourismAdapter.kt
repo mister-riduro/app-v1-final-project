@@ -3,39 +3,54 @@ package com.example.final_project.adapters
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.final_project.databinding.ItemTypeBasedTourismBinding
 import com.example.final_project.models.DetailTourism
+import com.example.final_project.models.dto.DetailTourismResponse
 import com.example.final_project.ui.activities.DetailTourismActivity
 import com.squareup.picasso.Picasso
 
-class TypeBasedTourismAdapter(private val detail_tourism: ArrayList<DetailTourism>): RecyclerView.Adapter<TypeBasedTourismAdapter.TypeBasedTourismViewHolder>() {
+class TypeBasedTourismAdapter: RecyclerView.Adapter<TypeBasedTourismAdapter.TypeBasedTourismViewHolder>() {
     inner class TypeBasedTourismViewHolder(val binding: ItemTypeBasedTourismBinding): RecyclerView.ViewHolder(binding.root)
 
+    private val differCallback = object : DiffUtil.ItemCallback<DetailTourism>() {
+        override fun areItemsTheSame(oldItem: DetailTourism, newItem: DetailTourism): Boolean {
+            return oldItem == newItem
+        }
+
+        override fun areContentsTheSame(oldItem: DetailTourism, newItem: DetailTourism): Boolean {
+            return oldItem == newItem
+        }
+    }
+
+    val differ = AsyncListDiffer(this, differCallback)
+    private lateinit var binding: ItemTypeBasedTourismBinding
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TypeBasedTourismViewHolder {
-        val binding = ItemTypeBasedTourismBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        binding = ItemTypeBasedTourismBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return TypeBasedTourismViewHolder(binding)
     }
 
     override fun getItemCount(): Int {
-        return detail_tourism.size
+        return differ.currentList.size
     }
 
     override fun onBindViewHolder(holder: TypeBasedTourismViewHolder, position: Int) {
-        with(holder) {
-            with(detail_tourism[position]) {
-                Picasso.get().load(this.tourismImage).into(binding.ivTourismPicture)
-                binding.tvAbTourismName.text = this.tourismName
-                binding.chipTourismType.text = this.tourismType
-                binding.tvAbTourismLocation.text = this.tourismAddress
-                binding.tvAbRating.text = this.tourismRating.toString()
+        val tourism = differ.currentList[position]
 
-                holder.itemView.setOnClickListener {
-                    val intent = Intent(it.context, DetailTourismActivity::class.java)
+        holder.itemView.apply {
+            Picasso.get().load(tourism.tourismImage).into(binding.ivTourismPicture)
+            binding.tvAbTourismName.text = tourism.tourismName
+            binding.chipTourismType.text = tourism.tourismType
+            binding.tvAbTourismLocation.text = tourism.tourismAddress
+            binding.tvAbRating.text = tourism.tourismRating.toString()
 
-                    intent.putExtra("tourismID", this.tourismID)
-                    it.context.startActivity(intent)
-                }
+            setOnClickListener {
+                val intent = Intent(it.context, DetailTourismActivity::class.java)
+
+                intent.putExtra("tourismID", tourism.tourismID)
+                it.context.startActivity(intent)
             }
         }
     }

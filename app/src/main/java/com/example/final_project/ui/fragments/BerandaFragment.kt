@@ -14,10 +14,9 @@ import com.example.final_project.models.*
 import com.example.final_project.models.`object`.DetailTourismObjects
 import com.example.final_project.models.`object`.MenuTourismObjects
 import com.example.final_project.models.`object`.NearestEventObjects
-import com.example.final_project.ui.activities.DetailTourismActivity
+//import com.example.final_project.ui.activities.DetailTourismActivity
 import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class BerandaFragment : Fragment() {
     private var _binding: FragmentBerandaBinding? = null
     private val binding get() = _binding
@@ -61,10 +60,10 @@ class BerandaFragment : Fragment() {
 
         //nearest tourism
         _binding!!.frameNearestTourism.setOnClickListener{
-            val intent = Intent(it.context, DetailTourismActivity::class.java)
-
-//            intent.putExtra("tourism_detail", DetailTourismObjects.detail_tourism_objects.first())
-            startActivity(intent)
+//            val intent = Intent(it.context, DetailTourismActivity::class.java)
+//
+////            intent.putExtra("tourism_detail", DetailTourismObjects.detail_tourism_objects.first())
+//            startActivity(intent)
         }
     }
 }
