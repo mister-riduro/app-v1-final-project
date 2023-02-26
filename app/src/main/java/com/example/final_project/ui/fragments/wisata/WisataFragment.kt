@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.get
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.final_project.MainActivity
@@ -41,7 +42,7 @@ class WisataFragment : Fragment() {
         val repository = Repository()
         val wisataViewModelFactory = WisataViewModelFactory(repository)
 
-        wisataViewModel = ViewModelProvider(this, wisataViewModelFactory).get(wisataViewModel::class.java)
+        wisataViewModel = ViewModelProvider(this, wisataViewModelFactory).get()
         wisataViewModel.getAllProvinces()
 
         setupRecyclerView()
