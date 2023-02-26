@@ -24,69 +24,17 @@
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.example.final_project.ui.fragments.FavoriteFragment"
-        android:label="FavoriteFragment" >
-        <action
-            android:id="@+id/action_favoriteFragment_to_wisataFragment"
-            app:destination="@id/wisataFragment" />
-        <action
-            android:id="@+id/action_favoriteFragment_to_hotelFragment"
-            app:destination="@id/hotelFragment" />
-        <action
-            android:id="@+id/action_favoriteFragment_to_profilFragment"
-            app:destination="@id/profilFragment" />
-        <action
-            android:id="@+id/action_favoriteFragment_to_berandaFragment"
-            app:destination="@id/berandaFragment" />
-    </fragment>
+        android:label="FavoriteFragment" />
     <fragment
         android:id="@+id/hotelFragment"
         android:name="com.example.final_project.ui.fragments.HotelFragment"
-        android:label="HotelFragment" >
-        <action
-            android:id="@+id/action_hotelFragment_to_berandaFragment"
-            app:destination="@id/berandaFragment" />
-        <action
-            android:id="@+id/action_hotelFragment_to_favoriteFragment"
-            app:destination="@id/favoriteFragment" />
-        <action
-            android:id="@+id/action_hotelFragment_to_wisataFragment"
-            app:destination="@id/wisataFragment" />
-        <action
-            android:id="@+id/action_hotelFragment_to_profilFragment"
-            app:destination="@id/profilFragment" />
-    </fragment>
+        android:label="HotelFragment" />
     <fragment
         android:id="@+id/profilFragment"
         android:name="com.example.final_project.ui.fragments.ProfilFragment"
-        android:label="ProfilFragment" >
-        <action
-            android:id="@+id/action_profilFragment_to_hotelFragment"
-            app:destination="@id/hotelFragment" />
-        <action
-            android:id="@+id/action_profilFragment_to_favoriteFragment"
-            app:destination="@id/favoriteFragment" />
-        <action
-            android:id="@+id/action_profilFragment_to_wisataFragment"
-            app:destination="@id/wisataFragment" />
-        <action
-            android:id="@+id/action_profilFragment_to_berandaFragment"
-            app:destination="@id/berandaFragment" />
-    </fragment>
+        android:label="ProfilFragment" />
     <fragment
         android:id="@+id/wisataFragment"
-        android:name="com.example.final_project.ui.fragments.WisataFragment"
-        android:label="WisataFragment" >
-        <action
-            android:id="@+id/action_wisataFragment_to_favoriteFragment"
-            app:destination="@id/favoriteFragment" />
-        <action
-            android:id="@+id/action_wisataFragment_to_hotelFragment"
-            app:destination="@id/hotelFragment" />
-        <action
-            android:id="@+id/action_wisataFragment_to_profilFragment"
-            app:destination="@id/profilFragment" />
-        <action
-            android:id="@+id/action_wisataFragment_to_berandaFragment"
-            app:destination="@id/berandaFragment" />
-    </fragment>
+        android:name="com.example.final_project.ui.fragments.wisata.WisataFragment"
+        android:label="WisataFragment" />
 </navigation>
