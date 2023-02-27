@@ -1,5 +1,5 @@
-package com.example.final_project.adapters
-
+//package com.example.final_project.adapters
+//
 //import android.view.LayoutInflater
 //import android.view.ViewGroup
 //import androidx.recyclerview.widget.RecyclerView

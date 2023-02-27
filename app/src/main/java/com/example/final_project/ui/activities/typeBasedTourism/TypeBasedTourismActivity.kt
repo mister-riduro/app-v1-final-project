@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.final_project.R
 import com.example.final_project.adapters.TypeBasedTourismAdapter
 import com.example.final_project.databinding.ActivityTypeBasedTourismBinding
 import com.example.final_project.remote.repository.Repository
@@ -14,7 +15,6 @@ import com.example.final_project.util.Resource
 class TypeBasedTourismActivity : AppCompatActivity() {
     private lateinit var binding: ActivityTypeBasedTourismBinding
     private lateinit var typeBasedTourismViewModel: TypeBasedTourismViewModel
-
     private lateinit var typeBasedTourismAdapter: TypeBasedTourismAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,9 +23,6 @@ class TypeBasedTourismActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val payload = intent.getStringExtra("tourismType")
-
-        Log.d("INTENT PAYLOAD", payload.toString())
-
         val repository = Repository()
         val typeBasedTourismViewModelFactory = TypeBasedTourismViewModelFactory(repository, application, payload.toString())
 
@@ -51,6 +48,8 @@ class TypeBasedTourismActivity : AppCompatActivity() {
                 }
             }
         })
+
+        supportActionBar?.setIcon(R.drawable.icon_arrow_left)
     }
 
     private fun setupRecyclerView() {

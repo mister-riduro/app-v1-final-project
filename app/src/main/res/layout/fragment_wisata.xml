@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.WisataFragment">
+    tools:context=".ui.fragments.wisata.WisataFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_search"

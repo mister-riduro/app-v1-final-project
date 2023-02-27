@@ -23,7 +23,7 @@
             android:name=".ui.activities.DetailHotelActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.AreaBasedTourismActivity"
+            android:name=".ui.activities.areaBasedTourism.AreaBasedTourismActivity"
             android:exported="false" />
         <activity
             android:name=".ui.activities.DetailTourismActivity"
