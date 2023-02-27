@@ -50,8 +50,8 @@ class WisataFragment : Fragment() {
         wisataViewModel._provinceLiveData.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is Resource.Success -> {
-                    response.data?.let {
-                        tourismAreaAdapter.differ.submitList(it.provinces)
+                    response.data?.let { wisataResponse ->
+                        tourismAreaAdapter.differ.submitList(wisataResponse.data)
                     }
                 }
 
@@ -74,10 +74,10 @@ class WisataFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
+        val layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
+        _binding!!.rvTourismArea.layoutManager = layoutManager
+
         tourismAreaAdapter = TourismAreaAdapter()
-        _binding!!.rvTourismArea.apply {
-            adapter = tourismAreaAdapter
-            layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
-        }
+        _binding!!.rvTourismArea.adapter = tourismAreaAdapter
     }
 }

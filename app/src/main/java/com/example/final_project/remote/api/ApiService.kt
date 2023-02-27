@@ -28,4 +28,10 @@ interface ApiService {
 
     @GET("/items/provinces")
     suspend fun getAllProvinces(): Response<ProvinceResponse>
+
+    @GET("/items/tourisms")
+    suspend fun getTourismByProvince(
+        @Query("fields") fields: String = "*.*,routes.routes_id_routes_id,facilities.tfacilities_tfacilities_id.*",
+        @Query("filter[province_name][_eq]") tourismProvince: String
+    ): Response<DetailTourismResponse>
 }
