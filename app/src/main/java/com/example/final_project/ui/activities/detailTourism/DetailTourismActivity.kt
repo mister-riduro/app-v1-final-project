@@ -1,9 +1,12 @@
 package com.example.final_project.ui.activities
 
 import android.os.Bundle
+import android.widget.CompoundButton
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
 import com.example.final_project.R
@@ -28,10 +31,13 @@ class DetailTourismActivity : AppCompatActivity() {
         val payload = intent.getLongExtra("tourismID", 1)
         val detailTourismViewModelFactory = DetailTourismViewModelFactory(repository, application,  payload)
 
+        val toggleButton: ToggleButton = binding.toggleFavorite
+        toggleButton.background = getDrawable(R.drawable.icon_favorite_outline)
+
         detailTourismViewModel = ViewModelProvider(this, detailTourismViewModelFactory).get(
             DetailTourismViewModel::class.java)
 
-        fetchData(payload)
+        fetchData(payload, toggleButton)
         supportActionBar?.hide()
 
         binding.ivArrowBack.setOnClickListener {
@@ -39,7 +45,7 @@ class DetailTourismActivity : AppCompatActivity() {
         }
     }
 
-    private fun fetchData(tourismID: Long) {
+    private fun fetchData(tourismID: Long, toggleButton: ToggleButton) {
         detailTourismViewModel.getDetailTourism(tourismID)
         detailTourismViewModel._tourismLiveData.observe(this) { response ->
             when (response) {
@@ -62,6 +68,14 @@ class DetailTourismActivity : AppCompatActivity() {
                     val roadCondition = response.data?.roadCondition
                     binding.tvSeeMoreRouteInformation.setOnClickListener {
                         showDialogOtherInformation("", timeTaken, roadCondition)
+                    }
+
+                    toggleButton.setOnCheckedChangeListener {_, isChecked ->
+                        if (isChecked) {
+                            toggleButton.background = getDrawable(R.drawable.icon_favorite_filled)
+                        } else {
+                            toggleButton.background = getDrawable(R.drawable.icon_favorite_outline)
+                        }
                     }
 
                     createFacilities(response.data?.facilities)
