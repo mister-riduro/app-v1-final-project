@@ -1,13 +1,10 @@
 package com.example.final_project.remote.api
 
-import com.example.final_project.models.DetailTourism
-import com.example.final_project.models.FavoriteTourism
+import com.example.final_project.models.*
 import com.example.final_project.models.dto.DetailTourismResponse
 import com.example.final_project.models.dto.ProvinceResponse
 import retrofit2.Response
-import retrofit2.http.GET
-import retrofit2.http.Path
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface ApiService {
     @GET("/items/favorite_tourism")
@@ -34,4 +31,19 @@ interface ApiService {
         @Query("fields") fields: String = "*.*,routes.routes_id_routes_id,facilities.tfacilities_tfacilities_id.*",
         @Query("filter[province_name][_eq]") tourismProvince: String
     ): Response<DetailTourismResponse>
+
+    @Headers("Content-Type: application/json")
+    @POST("/users")
+    suspend fun createUser(
+       @Body profileBody: ProfileBody
+    ): Response<ProfileWrapper>
+
+
+    @Headers("Content-Type: application/json")
+    @PATCH("/users/{id}")
+    suspend fun updateUserLocation(
+        @Path("id") userID: String,
+        @Body profileLocation: ProfileLocation
+    ): Response<Profile>
+
 }
