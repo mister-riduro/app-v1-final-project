@@ -16,8 +16,5 @@ data class ProfileBody(
     val firstName: String,
 
     @SerializedName("last_name")
-    val lastName: String,
-
-    @SerializedName("location")
-    val location: String? = null
+    val lastName: String
 )

@@ -1,9 +1,6 @@
 package com.example.final_project.remote.api
 
-import com.example.final_project.models.DetailTourism
-import com.example.final_project.models.FavoriteTourism
-import com.example.final_project.models.Profile
-import com.example.final_project.models.ProfileBody
+import com.example.final_project.models.*
 import com.example.final_project.models.dto.DetailTourismResponse
 import com.example.final_project.models.dto.ProvinceResponse
 import retrofit2.Response
@@ -39,7 +36,14 @@ interface ApiService {
     @POST("/users")
     suspend fun createUser(
        @Body profileBody: ProfileBody
-    ): Response<Profile>
+    ): Response<ProfileWrapper>
 
+
+    @Headers("Content-Type: application/json")
+    @PATCH("/users/{id}")
+    suspend fun updateUserLocation(
+        @Path("id") userID: String,
+        @Body profileLocation: ProfileLocation
+    ): Response<Profile>
 
 }

@@ -1,7 +1,9 @@
 package com.example.final_project.remote.repository
 
 import com.example.final_project.models.ProfileBody
+import com.example.final_project.models.ProfileLocation
 import com.example.final_project.remote.api.RetrofitInstance
+import com.example.final_project.remote.api.RetrofitLocInstance
 
 class Repository (){
         suspend fun getDetailTourism(tourismID: Long, fieldFilter: String) = RetrofitInstance.api.getDetailTourism(tourismID, fieldFilter)
@@ -10,4 +12,7 @@ class Repository (){
         suspend fun getTourismByProvince(fieldFilter: String, tourismProvince: String) = RetrofitInstance.api.getTourismByProvince(fieldFilter, tourismProvince)
 
         suspend fun createUser(profileBody: ProfileBody) = RetrofitInstance.api.createUser(profileBody)
+        suspend fun updateUserLocation(userID: String, profileLocation: ProfileLocation) = RetrofitInstance.api.updateUserLocation(userID, profileLocation)
+        suspend fun getAllProvincesBynder(apiKey: String) = RetrofitLocInstance.apiLocation.getAllProvinces(apiKey)
+        suspend fun getCitiesByProvinces(apiKey: String, provinceID: String) = RetrofitLocInstance.apiLocation.getCityByProvince(apiKey, provinceID)
 }
