@@ -1,10 +1,8 @@
-package com.example.final_project.models
+package com.example.final_project.models.profiles
 
 import com.google.gson.annotations.SerializedName
-data class Profile(
-    @SerializedName("id")
-    val id: String,
 
+data class ProfileBody(
     @SerializedName("email")
     val email: String,
 
@@ -18,8 +16,5 @@ data class Profile(
     val firstName: String,
 
     @SerializedName("last_name")
-    val lastName: String,
-
-    @SerializedName("location")
-    val location: String? = null
+    val lastName: String
 )
