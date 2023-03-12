@@ -6,10 +6,13 @@ import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.final_project.MainActivity
 import com.example.final_project.databinding.ActivityRegisterBinding
-import com.example.final_project.models.ProfileBody
+import com.example.final_project.models.profiles.ProfileBody
+import com.example.final_project.remote.preferences.Preferences
 import com.example.final_project.remote.repository.Repository
 import com.example.final_project.ui.activities.chooseLocation.ChooseLocationActivity
+import com.example.final_project.ui.activities.login.LoginActivity
 import com.example.final_project.util.Resource
 
 class RegisterActivity : AppCompatActivity() {
@@ -32,17 +35,26 @@ class RegisterActivity : AppCompatActivity() {
         val registerViewModelFactory = RegisterViewModelFactory(repository, application)
         val userRole = "af80f2d4-425f-4c3a-8f5f-f817cdebfb01"
 
+        val token = Preferences.getToken(this)
+
+        if (!token.isNullOrBlank()) {
+            navigateToHome()
+        }
+
         registerViewModel = ViewModelProvider(this, registerViewModelFactory).get(
             RegisterViewModel::class.java
         )
+
+        binding.btnLogin.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
 
         binding.btnNext.setOnClickListener {
             email = binding.etEmail.text.toString()
             password = binding.etPassword.text.toString()
             firstName = binding.etFirstName.text.toString()
             lastName = binding.etLastName.text.toString()
-
-            Log.d("EMAIL :", email)
 
             val profile = ProfileBody(email, password, userRole, firstName, lastName)
             registerViewModel.createUser(profile)
@@ -52,7 +64,6 @@ class RegisterActivity : AppCompatActivity() {
                     is Resource.Success -> {
                         it.data?.let { profileResponse ->
                             Log.d("SUCCESS", "Success Create User on DB")
-                            Log.d("PROFILE RESPONSE", "PROFILE RESPONSE : $profileResponse")
                             val intent = Intent(this, ChooseLocationActivity::class.java)
                             intent.putExtra("USERID", profileResponse.data.id)
                             startActivity(intent)
@@ -69,6 +80,9 @@ class RegisterActivity : AppCompatActivity() {
                 }
             })
         }
-
+    }
+    fun navigateToHome() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 }

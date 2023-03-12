@@ -8,7 +8,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.final_project.R
 import com.example.final_project.databinding.ActivityChooseLocationBinding
-import com.example.final_project.models.ProfileLocation
+import com.example.final_project.models.profiles.ProfileLocation
 import com.example.final_project.models.bynderbyte.BynderCity
 import com.example.final_project.models.bynderbyte.BynderProvince
 import com.example.final_project.remote.repository.Repository
