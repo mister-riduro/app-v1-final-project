@@ -4,8 +4,10 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.auth0.android.jwt.JWT
 import com.example.final_project.MainActivity
 import com.example.final_project.R
 import com.example.final_project.databinding.ActivityLoginBinding
@@ -57,6 +59,7 @@ class LoginActivity : AppCompatActivity() {
             when(response) {
                 is Resource.Success -> {
                     saveToken(response.data)
+                    navigateToHome()
                 }
 
                 is Resource.Loading -> {
@@ -64,7 +67,7 @@ class LoginActivity : AppCompatActivity() {
                 }
 
                 is Resource.Error -> {
-
+                    Toast.makeText(this, "Email / Password Salah", Toast.LENGTH_SHORT).show()
                 }
             }
         })
@@ -72,11 +75,13 @@ class LoginActivity : AppCompatActivity() {
 
     fun saveToken(data: LoginResponse?) {
         if (!data?.data?.accessToken.isNullOrEmpty()) {
-            data?.data?.accessToken.let {
-                Preferences.setToken(this, it.toString())
-            }
+            data?.data?.let {
+                val jwt = JWT(it.accessToken)
+                val userID = jwt.getClaim("id").asString()
 
-            navigateToHome()
+                loginViewModel.setValues(it.accessToken, it.expires.toInt(), true)
+                Preferences.instance.setUserID(userID.toString())
+            }
         }
     }
 }

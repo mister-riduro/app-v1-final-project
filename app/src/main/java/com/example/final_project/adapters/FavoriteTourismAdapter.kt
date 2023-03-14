@@ -6,7 +6,7 @@
 //import androidx.recyclerview.widget.RecyclerView
 //import com.bumptech.glide.Glide
 //import com.example.final_project.databinding.ItemFavoriteTourismBinding
-//import com.example.final_project.models.DetailTourism
+//import com.example.final_project.models.tourism.DetailTourism
 //import com.example.final_project.models.`object`.DetailTourismObjects
 //import com.example.final_project.ui.activities.DetailTourismActivity
 //

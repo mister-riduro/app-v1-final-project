@@ -28,4 +28,10 @@ class LoginViewModel(
         }
     }
 
+    fun setValues(token: String, expiredTime: Int, isLoggedIn: Boolean) {
+        repository.setToken(token)
+        repository.setExpiredTime(expiredTime)
+        repository.setLoggedIn(isLoggedIn)
+    }
+
 }

@@ -1,6 +1,7 @@
-package com.example.final_project.models
+package com.example.final_project.models.tourism
 
 import android.os.Parcelable
+import com.example.final_project.models.Routes
 import com.example.final_project.models.dto.TourismFacilitiesResponse
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize

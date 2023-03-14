@@ -4,12 +4,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.final_project.MainActivity
 import com.example.final_project.databinding.ActivityRegisterBinding
 import com.example.final_project.models.profiles.ProfileBody
-import com.example.final_project.remote.preferences.Preferences
 import com.example.final_project.remote.repository.Repository
 import com.example.final_project.ui.activities.chooseLocation.ChooseLocationActivity
 import com.example.final_project.ui.activities.login.LoginActivity
@@ -35,15 +35,11 @@ class RegisterActivity : AppCompatActivity() {
         val registerViewModelFactory = RegisterViewModelFactory(repository, application)
         val userRole = "af80f2d4-425f-4c3a-8f5f-f817cdebfb01"
 
-        val token = Preferences.getToken(this)
-
-        if (!token.isNullOrBlank()) {
-            navigateToHome()
-        }
-
         registerViewModel = ViewModelProvider(this, registerViewModelFactory).get(
             RegisterViewModel::class.java
         )
+
+        checkSession()
 
         binding.btnLogin.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
@@ -84,5 +80,16 @@ class RegisterActivity : AppCompatActivity() {
     fun navigateToHome() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
+    }
+
+    fun checkSession() {
+        if (registerViewModel.isLoggedIn()) {
+            if (registerViewModel.isExpired()) {
+                registerViewModel.resetPref()
+                Toast.makeText(this, "Sesi sudah berakhir", Toast.LENGTH_SHORT).show()
+            } else {
+                navigateToHome()
+            }
+        }
     }
 }
