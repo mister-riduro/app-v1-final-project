@@ -7,8 +7,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.final_project.databinding.ItemTypeBasedTourismBinding
-import com.example.final_project.models.DetailTourism
-import com.example.final_project.models.dto.DetailTourismResponse
+import com.example.final_project.models.tourism.DetailTourism
 import com.example.final_project.ui.activities.DetailTourismActivity
 import com.squareup.picasso.Picasso
 

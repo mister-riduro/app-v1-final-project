@@ -8,7 +8,7 @@ import com.example.final_project.models.login.LoginResponse
 import com.example.final_project.models.profiles.Profile
 import com.example.final_project.models.profiles.ProfileBody
 import com.example.final_project.models.profiles.ProfileLocation
-import com.example.final_project.models.profiles.ProfileWrapper
+import com.example.final_project.models.profiles.ProfileResponse
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -21,14 +21,13 @@ interface ApiService {
 
     @GET("/users/{userid}")
     suspend fun getUserData(
-        @Header("Authorization") token_auth: String?,
         @Path("userid") userID: String
-    ): Response<Profile>
+    ): Response<ProfileResponse>
 
     @GET("/items/tourisms/{tourism_id}")
     suspend fun getDetailTourism(
         @Path("tourism_id") tourism_id: Long,
-        @Query("fields") fields: String = "*.*,routes.routes_id_routes_id,facilities.tfacilities_tfacilities_id.*"): Response<DetailTourism>
+        @Query("fields") fields: String = "*.*,routes.routes_id_routes_id,facilities.tfacilities_tfacilities_id.*"): Response<com.example.final_project.models.tourism.DetailTourismResponse>
 
     @GET("/items/tourisms")
     suspend fun getTourismByType(
@@ -49,7 +48,7 @@ interface ApiService {
     @POST("/users")
     suspend fun createUser(
        @Body profileBody: ProfileBody
-    ): Response<ProfileWrapper>
+    ): Response<ProfileResponse>
 
     @Headers("Content-Type: application/json")
     @PATCH("/users/{id}")

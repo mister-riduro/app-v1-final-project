@@ -1,6 +1,7 @@
 package com.example.final_project.ui.activities
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.CompoundButton
 import android.widget.ImageView
 import android.widget.TextView
@@ -31,6 +32,8 @@ class DetailTourismActivity : AppCompatActivity() {
         val payload = intent.getLongExtra("tourismID", 1)
         val detailTourismViewModelFactory = DetailTourismViewModelFactory(repository, application,  payload)
 
+        Log.d("TOURISM ID", "PAYLOAD = $payload")
+
         val toggleButton: ToggleButton = binding.toggleFavorite
         toggleButton.background = getDrawable(R.drawable.icon_favorite_outline)
 
@@ -48,24 +51,26 @@ class DetailTourismActivity : AppCompatActivity() {
     private fun fetchData(tourismID: Long, toggleButton: ToggleButton) {
         detailTourismViewModel.getDetailTourism(tourismID)
         detailTourismViewModel._tourismLiveData.observe(this) { response ->
+            Log.d("LOG RESPONSE WISATA", "${response.data?.data?.tourismName}")
+
             when (response) {
                 is Resource.Success -> {
-                    binding.tvDetailAddress.text = response.data?.tourismAddress
-                    binding.tvTypeTourism.text = response.data?.tourismType
-                    binding.tvTourismLocation.text = response.data?.tourismCity
-                    binding.tvDetailTourismDesc.text = response.data?.tourismDescription
-                    binding.tvTourismName.text = response.data?.tourismName
-                    binding.tvRating.text = response.data?.tourismRating.toString()
-                    binding.tvOpenHour.text = response.data?.openHour
-                    binding.tvDetailTicketPrice.text = response.data?.entryPrice.toString()
+                    binding.tvDetailAddress.text = response.data?.data?.tourismAddress
+                    binding.tvTypeTourism.text = response.data?.data?.tourismType
+                    binding.tvTourismLocation.text = response.data?.data?.tourismCity
+                    binding.tvDetailTourismDesc.text = response.data?.data?.tourismDescription
+                    binding.tvTourismName.text = response.data?.data?.tourismName
+                    binding.tvRating.text = response.data?.data?.tourismRating.toString()
+                    binding.tvOpenHour.text = response.data?.data?.openHour
+                    binding.tvDetailTicketPrice.text = response.data?.data?.entryPrice.toString()
 
-                    val tourismDescription = response.data?.tourismDescription
+                    val tourismDescription = response.data?.data?.tourismDescription
                     binding.tvSeeMoreTourismDesc.setOnClickListener {
                         showDialogTourismDesc(tourismDescription)
                     }
 
-                    val timeTaken = response.data?.travelingTime
-                    val roadCondition = response.data?.roadCondition
+                    val timeTaken = response.data?.data?.travelingTime
+                    val roadCondition = response.data?.data?.roadCondition
                     binding.tvSeeMoreRouteInformation.setOnClickListener {
                         showDialogOtherInformation("", timeTaken, roadCondition)
                     }
@@ -78,7 +83,7 @@ class DetailTourismActivity : AppCompatActivity() {
                         }
                     }
 
-                    createFacilities(response.data?.facilities)
+                    createFacilities(response.data?.data?.facilities)
                 }
                 is Resource.Error -> {
                     // show error message

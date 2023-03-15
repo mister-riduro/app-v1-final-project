@@ -1,6 +1,7 @@
 package com.example.final_project.models
 
 import android.os.Parcelable
+import com.example.final_project.models.tourism.DetailTourism
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize

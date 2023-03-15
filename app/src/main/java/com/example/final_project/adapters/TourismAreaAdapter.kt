@@ -8,9 +8,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.final_project.databinding.ItemTourismAreaBinding
-import com.example.final_project.models.DetailTourism
 import com.example.final_project.models.Province
-import com.example.final_project.ui.activities.DetailTourismActivity
 import com.example.final_project.ui.activities.areaBasedTourism.AreaBasedTourismActivity
 import com.squareup.picasso.Picasso
 
