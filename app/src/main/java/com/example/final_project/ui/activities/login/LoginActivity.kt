@@ -1,7 +1,6 @@
 package com.example.final_project.ui.activities.login
 
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -9,15 +8,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.auth0.android.jwt.JWT
 import com.example.final_project.MainActivity
-import com.example.final_project.R
 import com.example.final_project.databinding.ActivityLoginBinding
-import com.example.final_project.databinding.FragmentBerandaBinding
 import com.example.final_project.models.login.LoginBody
 import com.example.final_project.models.login.LoginResponse
 import com.example.final_project.remote.preferences.Preferences
 import com.example.final_project.remote.repository.Repository
 import com.example.final_project.ui.activities.register.RegisterActivity
-import com.example.final_project.ui.fragments.BerandaFragment
 import com.example.final_project.util.Resource
 
 class LoginActivity : AppCompatActivity() {
@@ -46,11 +42,6 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
-    fun navigateToHome() {
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
-    }
-
     fun setLogin(email: String, password: String) {
         val loginBody = LoginBody(email, password)
 
@@ -71,6 +62,10 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
         })
+    }
+    fun navigateToHome() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 
     fun saveToken(data: LoginResponse?) {

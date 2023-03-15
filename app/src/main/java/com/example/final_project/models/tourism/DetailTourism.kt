@@ -6,7 +6,6 @@ import com.example.final_project.models.dto.TourismFacilitiesResponse
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
-@Parcelize
 data class DetailTourism(
     @SerializedName("tourism_id")
     val tourismID: Long,
@@ -61,6 +60,10 @@ data class DetailTourism(
 
     @SerializedName("longitude")
     val longitude: Double,
+
+    @SerializedName("facilities")
     val facilities: List<TourismFacilitiesResponse?>,
-    val routes: List<Routes?>
-) : Parcelable
+
+    @SerializedName("routes")
+    val routes: List<Routes>
+)
