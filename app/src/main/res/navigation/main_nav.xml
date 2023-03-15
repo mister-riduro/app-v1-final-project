@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/berandaFragment"
-        android:name="com.example.final_project.ui.fragments.BerandaFragment"
+        android:name="com.example.final_project.ui.fragments.beranda.BerandaFragment"
         android:label="BerandaFragment">
         <action
             android:id="@+id/action_berandaFragment_to_profilFragment"

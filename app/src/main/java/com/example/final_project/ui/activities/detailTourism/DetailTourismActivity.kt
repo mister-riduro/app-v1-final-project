@@ -2,16 +2,18 @@ package com.example.final_project.ui.activities
 
 import android.os.Bundle
 import android.util.Log
-import android.widget.CompoundButton
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.ToggleButton
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.final_project.R
+import com.example.final_project.adapters.RoutesListAdapter
+import com.example.final_project.adapters.TourismAreaAdapter
 import com.example.final_project.databinding.ActivityTourismDetailBinding
+import com.example.final_project.models.Routes
 import com.example.final_project.models.dto.TourismFacilitiesResponse
 import com.example.final_project.remote.repository.Repository
 import com.example.final_project.ui.activities.detailTourism.DetailTourismViewModel
@@ -23,6 +25,7 @@ import com.google.android.material.chip.Chip
 class DetailTourismActivity : AppCompatActivity() {
     private lateinit var binding: ActivityTourismDetailBinding
     private lateinit var detailTourismViewModel: DetailTourismViewModel
+    private lateinit var routesAdapter: RoutesListAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityTourismDetailBinding.inflate(layoutInflater)
@@ -30,7 +33,7 @@ class DetailTourismActivity : AppCompatActivity() {
 
         val repository = Repository()
         val payload = intent.getLongExtra("tourismID", 1)
-        val detailTourismViewModelFactory = DetailTourismViewModelFactory(repository, application,  payload)
+        val detailTourismViewModelFactory = DetailTourismViewModelFactory(repository, application)
 
         Log.d("TOURISM ID", "PAYLOAD = $payload")
 
@@ -71,8 +74,12 @@ class DetailTourismActivity : AppCompatActivity() {
 
                     val timeTaken = response.data?.data?.travelingTime
                     val roadCondition = response.data?.data?.roadCondition
+                    val routes = response.data?.data?.routes
+
+                    Log.d("ROUTES", "$routes")
+
                     binding.tvSeeMoreRouteInformation.setOnClickListener {
-                        showDialogOtherInformation("", timeTaken, roadCondition)
+                        showDialogOtherInformation(routes, timeTaken, roadCondition)
                     }
 
                     toggleButton.setOnCheckedChangeListener {_, isChecked ->
@@ -87,6 +94,7 @@ class DetailTourismActivity : AppCompatActivity() {
                 }
                 is Resource.Error -> {
                     // show error message
+                    Toast.makeText(this, "Error retrieve tourism data", Toast.LENGTH_SHORT)
                 }
                 is Resource.Loading -> {
                     // show a progress bar
@@ -110,16 +118,21 @@ class DetailTourismActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    private fun showDialogOtherInformation(route: String?, time: String?, road: String?) {
+    private fun showDialogOtherInformation(routes: List<Routes>?, time: String?, road: String?) {
         val dialog = BottomSheetDialog(this)
 
         dialog.setContentView(R.layout.dialog_tourism_route_information)
         val btnClose = dialog.findViewById<ImageView>(R.id.btn_close_dialog)
-        val dialogRouteDesc = dialog.findViewById<TextView>(R.id.tv_detail_route_information)
+        val dialogRouteDesc = dialog.findViewById<RecyclerView>(R.id.tv_detail_route_information)
         val dialogTimeDesc = dialog.findViewById<TextView>(R.id.tv_detail_time_taken)
         val dialogRoadDesc = dialog.findViewById<TextView>(R.id.tv_detail_road_condition)
 
-        dialogRouteDesc?.text = route
+        val layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        dialogRouteDesc?.layoutManager = layoutManager
+
+        routesAdapter = RoutesListAdapter(routes)
+        dialogRouteDesc?.adapter = routesAdapter
+
         dialogTimeDesc?.text = time
         dialogRoadDesc?.text = road
 

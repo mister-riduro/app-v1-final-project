@@ -1,5 +1,6 @@
 package com.example.final_project.ui.activities.chooseLocation
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +13,7 @@ import com.example.final_project.models.profiles.ProfileLocation
 import com.example.final_project.models.bynderbyte.BynderCity
 import com.example.final_project.models.bynderbyte.BynderProvince
 import com.example.final_project.remote.repository.Repository
+import com.example.final_project.ui.activities.login.LoginActivity
 import com.example.final_project.util.Resource
 
 class ChooseLocationActivity : AppCompatActivity() {
@@ -57,6 +59,8 @@ class ChooseLocationActivity : AppCompatActivity() {
                     is Resource.Success -> {
                         response.data?.let { response ->
                             Log.d("SUCCESS", "Success Update User Location")
+                            val intent = Intent(this, LoginActivity::class.java)
+                            startActivity(intent)
                         }
                     }
                     is Resource.Loading -> {
