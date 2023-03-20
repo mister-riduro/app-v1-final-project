@@ -10,7 +10,7 @@
 //import android.widget.ImageView
 //import android.widget.TextView
 //import com.example.final_project.R
-//import com.example.final_project.models.HotelFacilities
+//import com.example.final_project.models.hotelFacilities.HotelFacilities
 //import java.net.URL
 //
 //

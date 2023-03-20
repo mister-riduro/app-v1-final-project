@@ -1,4 +1,4 @@
-package com.example.final_project.ui.activities
+package com.example.final_project.ui.activities.detailHotel
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

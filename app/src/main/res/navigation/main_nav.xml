@@ -27,7 +27,7 @@
         android:label="FavoriteFragment" />
     <fragment
         android:id="@+id/hotelFragment"
-        android:name="com.example.final_project.ui.fragments.HotelFragment"
+        android:name="com.example.final_project.ui.fragments.hotel.HotelFragment"
         android:label="HotelFragment" />
     <fragment
         android:id="@+id/profilFragment"

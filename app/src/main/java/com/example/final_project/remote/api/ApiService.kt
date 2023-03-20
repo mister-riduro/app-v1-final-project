@@ -3,6 +3,10 @@ package com.example.final_project.remote.api
 import com.example.final_project.models.*
 import com.example.final_project.models.dto.ListTourismResponse
 import com.example.final_project.models.dto.ProvinceResponse
+import com.example.final_project.models.hotel.HotelFacilitiesResponse
+import com.example.final_project.models.hotel.HotelFacilitiesSelectionResponse
+import com.example.final_project.models.hotel.HotelListResponse
+import com.example.final_project.models.hotel.HotelRequestBody
 import com.example.final_project.models.login.LoginBody
 import com.example.final_project.models.login.LoginResponse
 import com.example.final_project.models.profiles.Profile
@@ -57,6 +61,15 @@ interface ApiService {
         @Path("id") userID: String,
         @Body profileLocation: ProfileLocation
     ): Response<Profile>
+
+    @GET("/items/hfacilities")
+    suspend fun getHotelFacilities(): Response<HotelFacilitiesSelectionResponse>
+
+    @GET("/items/hotels")
+    suspend fun getHotels(
+        @Query("filter[hotel_city][_eq]") address: String,
+        @Query("filter[cluster][_eq]") cluster: Long
+    ): Response<HotelListResponse>
 
     @Headers("Content-Type: application/json")
     @POST("/auth/login")
