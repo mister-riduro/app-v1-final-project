@@ -1,6 +1,5 @@
 package com.example.final_project.remote.repository
 
-import com.example.final_project.models.hotel.HotelRequestBody
 import com.example.final_project.models.hotel.RecommendationBody
 import com.example.final_project.models.login.LoginBody
 import com.example.final_project.models.profiles.ProfileBody

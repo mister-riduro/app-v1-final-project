@@ -2,13 +2,12 @@ package com.example.final_project.ui.activities.listHotel
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.LinearLayout
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.final_project.adapters.HotelListAdapter
 import com.example.final_project.databinding.ActivityListHotelBinding
-import com.example.final_project.models.hotel.HotelRequestBody
 import com.example.final_project.models.hotel.RecommendationBody
 import com.example.final_project.remote.repository.Repository
 import com.example.final_project.util.Resource
@@ -25,10 +24,12 @@ class ListHotelActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val destination = intent.getStringExtra("DESTINATION")
-        val rating = intent.getStringExtra("RATING")
+        val rating = intent.getDoubleExtra("RATING", 0.0)
         val facilities = intent.getStringArrayListExtra("FACILITIES")
 
-        val recommendationBody = RecommendationBody(facilities!!, rating?.toDouble()!!)
+        Log.d("RATING-1", "$rating")
+
+        val recommendationBody = RecommendationBody(facilities!!, rating)
 
         val repository = Repository()
         val listHotelViewModelFactory = ListHotelViewModelFactory(repository, application)

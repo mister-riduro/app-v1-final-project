@@ -30,8 +30,8 @@ class HotelFragment : Fragment() {
 
         binding?.btnNext?.setOnClickListener {
             val intent = Intent(it.context, ChooseHotelFacilitiesActivity::class.java)
-            intent.putExtra("HOTEL_DEST",binding?.etDestination.toString())
-            intent.putExtra("HOTEL_RATING",binding?.etRating.toString())
+            intent.putExtra("HOTEL_DEST",binding?.etDestination?.text.toString())
+            intent.putExtra("HOTEL_RATING",binding?.etRating?.text.toString().toDouble())
             startActivity(intent)
         }
     }

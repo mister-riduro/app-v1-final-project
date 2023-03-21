@@ -28,7 +28,10 @@ class ChooseHotelFacilitiesActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val hotelDestination = intent.getStringExtra("HOTEL_DEST")
-        val hotelRating = intent.getStringExtra("HOTEL_RATING")
+        val hotelRating = intent.getDoubleExtra("HOTEL_RATING", 0.0)
+
+        Log.d("RATING DI FACIL", "$hotelRating")
+
         val repository = Repository()
         val chooseHotelFacilitiesViewModelFactory = ChooseHotelFacilitiesViewModelFactory(repository, application)
 
