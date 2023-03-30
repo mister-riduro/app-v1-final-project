@@ -1,10 +1,12 @@
 package com.example.final_project.remote.repository
 
+import com.example.final_project.models.hotel.RecommendationBody
 import com.example.final_project.models.login.LoginBody
 import com.example.final_project.models.profiles.ProfileBody
 import com.example.final_project.models.profiles.ProfileLocation
 import com.example.final_project.remote.api.RetrofitInstance
 import com.example.final_project.remote.api.RetrofitLocInstance
+import com.example.final_project.remote.api.RetrofitMadeInstance
 import com.example.final_project.remote.api.RetrofitWeatherInstance
 import com.example.final_project.remote.preferences.Preferences
 
@@ -22,6 +24,11 @@ class Repository (){
         suspend fun loginAccount(loginBody: LoginBody) = RetrofitInstance.api.loginUser(loginBody)
 
         suspend fun getWeatherData(city: String, apiKey: String, language: String) = RetrofitWeatherInstance.apiWeather.getWeatherData(city, apiKey, language)
+
+        suspend fun getHotelRecommendation(recommendationBody: RecommendationBody) = RetrofitMadeInstance.apiMade.getHotelRecommendation(recommendationBody)
+
+        suspend fun getHotelFacilities() = RetrofitInstance.api.getHotelFacilities()
+        suspend fun getHotels(city: String, cluster: Long) = RetrofitInstance.api.getHotels(city, cluster)
 
         // Preferences
         fun setToken(value: String) = Preferences.instance.setToken(value)
