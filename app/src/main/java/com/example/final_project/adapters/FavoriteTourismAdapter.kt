@@ -1,43 +1,58 @@
-//package com.example.final_project.adapters
-//
-//import android.content.Intent
-//import android.view.LayoutInflater
-//import android.view.ViewGroup
-//import androidx.recyclerview.widget.RecyclerView
-//import com.bumptech.glide.Glide
-//import com.example.final_project.databinding.ItemFavoriteTourismBinding
-//import com.example.final_project.models.tourism.DetailTourism
-//import com.example.final_project.models.`object`.DetailTourismObjects
-//import com.example.final_project.ui.activities.DetailTourismActivity
-//
-//class FavoriteTourismAdapter(private val detail_tourism: ArrayList<DetailTourism>): RecyclerView.Adapter<FavoriteTourismAdapter.FavoriteTourismViewHolder>() {
-//    inner class FavoriteTourismViewHolder(val binding: ItemFavoriteTourismBinding): RecyclerView.ViewHolder(binding.root)
-//
-//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteTourismViewHolder {
-//        val binding = ItemFavoriteTourismBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-//        return FavoriteTourismViewHolder(binding)
-//    }
-//
-//    override fun onBindViewHolder(holder: FavoriteTourismViewHolder, position: Int) {
-//        with(holder) {
-//            with(detail_tourism[position]) {
-//                Glide.with(itemView.context).load(this.tourismImage).into(binding.ivTourismPicture)
-//                binding.tvAbTourismName.text = this.tourismName
-//                binding.chipTourismType.text = this.tourismType
-//                binding.tvAbTourismLocation.text = this.tourismAddress
-//                binding.tvAbRating.text = this.tourismRating.toString()
-//
-//                holder.itemView.setOnClickListener {
-//                    val intent = Intent(it.context, DetailTourismActivity::class.java)
-//
-////                    intent.putExtra("tourism_detail", DetailTourismObjects.detail_tourism_objects[position])
-//                    it.context.startActivity(intent)
-//                }
-//            }
-//        }
-//    }
-//
-//    override fun getItemCount(): Int {
-//        return detail_tourism.size
-//    }
-//}
+package com.example.final_project.adapters
+
+import android.content.Intent
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.RecyclerView
+import com.example.final_project.databinding.ItemFavoriteTourismBinding
+import com.example.final_project.models.favoriteTourism.FavoriteTourism
+import com.example.final_project.ui.activities.DetailTourismActivity
+import com.squareup.picasso.Picasso
+
+class FavoriteTourismAdapter: RecyclerView.Adapter<FavoriteTourismAdapter.FavoriteTourismViewHolder>() {
+    inner class FavoriteTourismViewHolder(val binding: ItemFavoriteTourismBinding): RecyclerView.ViewHolder(binding.root)
+    private lateinit var binding: ItemFavoriteTourismBinding
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteTourismViewHolder {
+        binding = ItemFavoriteTourismBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return FavoriteTourismViewHolder(binding)
+    }
+
+    private val differCallback = object : DiffUtil.ItemCallback<FavoriteTourism>() {
+        override fun areItemsTheSame(oldItem: FavoriteTourism, newItem: FavoriteTourism): Boolean {
+            return oldItem == newItem
+        }
+
+        override fun areContentsTheSame(oldItem: FavoriteTourism, newItem: FavoriteTourism): Boolean {
+            return oldItem == newItem
+        }
+    }
+
+    val differ = AsyncListDiffer(this, differCallback)
+    override fun onBindViewHolder(holder: FavoriteTourismViewHolder, position: Int) {
+        val tourism = differ.currentList[position]
+
+        holder.itemView.apply {
+
+            Picasso.get().isLoggingEnabled = true
+            Picasso.get().load(tourism.tourismsTourismID.tourismImage).into(binding.ivTourismPicture)
+
+            binding.tvAbTourismName.text = tourism.tourismsTourismID.tourismName
+            binding.chipTourismType.text = tourism.tourismsTourismID.tourismType
+            binding.tvAbTourismLocation.text = tourism.tourismsTourismID.tourismAddress
+            binding.tvAbRating.text = tourism.tourismsTourismID.tourismRating.toString()
+
+            setOnClickListener {
+                val intent = Intent(it.context, DetailTourismActivity::class.java)
+    //                    intent.putExtra("tourism_detail", DetailTourismObjects.detail_tourism_objects[position])
+                it.context.startActivity(intent)
+            }
+        }
+    }
+
+    override fun getItemCount(): Int {
+        return differ.currentList.size
+    }
+}

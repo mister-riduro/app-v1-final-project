@@ -49,5 +49,5 @@ data class HotelDetail(
     val hotelName: String,
 
     @SerializedName("facilities")
-    val facilities: List<HotelFacilities>
+    val facilities: List<HotelDetailFacilitiesResponse>
 )

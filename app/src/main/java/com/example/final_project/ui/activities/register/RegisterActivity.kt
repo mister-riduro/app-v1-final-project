@@ -60,6 +60,7 @@ class RegisterActivity : AppCompatActivity() {
                     is Resource.Success -> {
                         it.data?.let { profileResponse ->
                             Log.d("SUCCESS", "Success Create User on DB")
+
                             val intent = Intent(this, ChooseLocationActivity::class.java)
                             intent.putExtra("USERID", profileResponse.data.id)
                             startActivity(intent)

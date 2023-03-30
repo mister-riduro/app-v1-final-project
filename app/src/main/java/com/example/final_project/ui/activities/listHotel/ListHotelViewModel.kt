@@ -28,7 +28,7 @@ class ListHotelViewModel(
 
     fun getHotel(city: String, cluster: Long) = viewModelScope.launch {
         _hotelLiveData.postValue(Resource.Loading())
-        val resp = repository.getHotels(city, cluster)
+        val resp = repository.getListHotels(city, cluster)
         if (resp.isSuccessful) {
             resp.body()?.let {
                 _hotelLiveData.postValue(Resource.Success(it))

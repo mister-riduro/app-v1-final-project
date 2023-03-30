@@ -1,12 +1,9 @@
-package com.example.final_project.models.tourism
+package com.example.final_project.models.favoriteTourism
 
-import android.os.Parcelable
-import com.example.final_project.models.Routes
 import com.example.final_project.models.dto.TourismFacilitiesResponse
 import com.google.gson.annotations.SerializedName
-import kotlinx.android.parcel.Parcelize
 
-data class DetailTourism(
+data class FavoriteDetailTourism(
     @SerializedName("tourism_id")
     val tourismID: Long,
 
@@ -62,8 +59,8 @@ data class DetailTourism(
     val longitude: Double,
 
     @SerializedName("facilities")
-    val facilities: List<TourismFacilitiesResponse?>,
+    val facilities: List<Long?>,
 
     @SerializedName("routes")
-    val routes: List<Routes?>
+    val routes: List<Long?>
 )

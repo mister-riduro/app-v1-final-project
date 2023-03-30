@@ -15,8 +15,6 @@ class HotelFragment : Fragment() {
     private var _binding: FragmentHotelBinding? = null
     private val binding get() = _binding
 
-    private lateinit var hotelFacilitiesSelectorAdapter: HotelFacilitiesSelectorAdapter
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

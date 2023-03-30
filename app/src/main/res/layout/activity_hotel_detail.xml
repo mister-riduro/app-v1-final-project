@@ -51,17 +51,26 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp">
 
+            <ToggleButton
+                android:id="@+id/toggle_favorite"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/tv_hotel_name"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:text="The Gaia Hotel Bandung"
-                android:textSize="20sp"
-                android:lineSpacingExtra="4sp"
                 android:fontFamily="@font/plus_jakarta_sans_bold"
-                android:textColor="@color/text_grey_primary"/>
+                android:lineSpacingExtra="4sp"
+                android:text="The Gaia Hotel Bandung"
+                android:textColor="@color/text_grey_primary"
+                android:textSize="20sp"
+                android:layout_marginEnd="12dp"
+                app:layout_constraintEnd_toStartOf="@+id/toggle_favorite"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <LinearLayout
                 android:id="@+id/layout_hotel_loc_price"
@@ -213,13 +222,14 @@
             android:fontFamily="@font/plus_jakarta_sans_semibold"
             android:textColor="@color/text_grey_primary" />
 
-        <GridView
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/grid_facilities"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:numColumns="3"/>
+            />
 
     </LinearLayout>
 

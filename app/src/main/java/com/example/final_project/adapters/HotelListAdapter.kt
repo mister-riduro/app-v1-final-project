@@ -1,6 +1,7 @@
 package com.example.final_project.adapters
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -45,6 +46,8 @@ class HotelListAdapter: RecyclerView.Adapter<HotelListAdapter.HotelListViewHolde
 
             setOnClickListener {
                 val intent = Intent(it.context, DetailHotelActivity::class.java)
+
+                Log.d("HOTEL ID", "${hotel.hotelID}")
 
                 intent.putExtra("HOTEL_ID", hotel.hotelID)
                 it.context.startActivity(intent)

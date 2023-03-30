@@ -3,6 +3,12 @@ package com.example.final_project.remote.api
 import com.example.final_project.models.*
 import com.example.final_project.models.dto.ListTourismResponse
 import com.example.final_project.models.dto.ProvinceResponse
+import com.example.final_project.models.favoriteTourism.*
+import com.example.final_project.models.favoriteTourism.userFavoriteTourism.CreateUserFavoriteTourismBody
+import com.example.final_project.models.favoriteTourism.userFavoriteTourism.GetUserFavoriteTourismResponse
+import com.example.final_project.models.favoriteTourism.userFavoriteTourism.UpdateUserFavoriteTourismBody
+import com.example.final_project.models.favoriteTourism.userFavoriteTourism.UpsertUserFavoriteTourismResponse
+import com.example.final_project.models.hotel.HotelDetailResponse
 import com.example.final_project.models.hotel.HotelFacilitiesSelectionResponse
 import com.example.final_project.models.hotel.HotelListResponse
 import com.example.final_project.models.login.LoginBody
@@ -16,12 +22,6 @@ import retrofit2.Response
 import retrofit2.http.*
 
 interface ApiService {
-    @GET("/items/favorite_tourism")
-    suspend fun getFavoriteTourism(
-        @Header("Authorization") token_auth: String?,
-        @Query("filter[user_id][_eq]") user_id: Long,
-        @Query("fields") fields: String = "*.*,routes.routes_id_routes_id,facilities.tfacilities_tfacilities_id.*"):Response<List<FavoriteTourism>>
-
     @GET("/users/{userid}")
     suspend fun getUserData(
         @Path("userid") userID: String
@@ -64,10 +64,16 @@ interface ApiService {
     suspend fun getHotelFacilities(): Response<HotelFacilitiesSelectionResponse>
 
     @GET("/items/hotels")
-    suspend fun getHotels(
+    suspend fun getListHotels(
         @Query("filter[hotel_city][_eq]") address: String,
         @Query("filter[cluster][_eq]") cluster: Long
     ): Response<HotelListResponse>
+
+    @GET("/items/hotels/{hotel_id}")
+    suspend fun getDetailHotel(
+        @Path("hotel_id") hotelID: Long,
+        @Query("fields") fieldFilter: String = "*.*,facilities.hfacilities_hfacilities_id.*"
+    ): Response<HotelDetailResponse>
 
     @Headers("Content-Type: application/json")
     @POST("/auth/login")
@@ -75,4 +81,39 @@ interface ApiService {
         @Body loginBody: LoginBody
     ): Response<LoginResponse>
 
+    @Headers("Content-Type: application/json")
+    @POST("/items/favorite_tourism")
+    suspend fun createFavoriteTourism(
+        @Body createFavoriteTourismBody: CreateFavoriteTourismBody
+    ): Response<UpsertFavoriteTourismResponse>
+
+    @GET("/items/favorite_tourism")
+    suspend fun getFavoriteTourism(
+        @Query("filter[user_id][_eq]") user_id: String,
+        @Query("fields") fields: String = "*.*,tourisms.tourisms_tourism_id.*"):Response<FavoriteTourismDataResponse>
+
+    @PATCH("/items/favorite_tourism/{favorite_id}")
+    suspend fun updateFavoriteTourism(
+        @Path("favorite_id") favID: Long,
+        @Body updateFavTourismBody: UpdateFavTourismBody
+    ): Response<UpsertFavoriteTourismResponse>
+
+    @Headers("Content-Type: application/json")
+    @POST("items/user_favorite_tourism")
+    suspend fun createUserFavoriteTourism(
+        @Body createUserFavoriteTourismBody: CreateUserFavoriteTourismBody
+    ): Response<UpsertUserFavoriteTourismResponse>
+
+    @Headers("Content-Type: application/json")
+    @PATCH("items/user_favorite_tourism/{tourism_id}")
+    suspend fun updateUserFavoriteTourism(
+        @Path("tourism_id") tourismID: Long,
+        @Body updateUserFavoriteTourismBody: UpdateUserFavoriteTourismBody
+    ): Response<UpsertUserFavoriteTourismResponse>
+
+    @GET("items/user_favorite_tourism")
+    suspend fun getUserFavoriteTourism(
+        @Query("filter[tourism_id][_eq]") tourismID: Long,
+        @Query("filter[user_id][_eq]") userID: String
+    ): Response<GetUserFavoriteTourismResponse>
 }

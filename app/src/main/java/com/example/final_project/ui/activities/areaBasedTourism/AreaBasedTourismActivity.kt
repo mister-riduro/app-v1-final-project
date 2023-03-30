@@ -53,6 +53,9 @@ class AreaBasedTourismActivity : AppCompatActivity() {
                         Log.d("ERROR TOURISM", "Error occured : $message")
                     }
                 }
+                else -> {
+
+                }
             }
         })
 

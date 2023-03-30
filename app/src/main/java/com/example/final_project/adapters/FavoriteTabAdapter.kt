@@ -7,7 +7,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.final_project.ui.fragments.FavoriteHotelFragment
-import com.example.final_project.ui.fragments.FavoriteTourismFragment
+import com.example.final_project.ui.fragments.favoriteTourism.FavoriteTourismFragment
 
 private const val NUM_TABS = 2
 
@@ -17,10 +17,12 @@ class FavoriteTabAdapter(fragmentManager: FragmentManager, lifeCycle: Lifecycle)
     }
 
     override fun createFragment(position: Int): Fragment {
-        when (position) {
-            0 -> return FavoriteHotelFragment()
+        return when (position) {
+            0 -> FavoriteTourismFragment()
+            else -> {
+                FavoriteHotelFragment()
+            }
         }
-        return FavoriteTourismFragment()
     }
 
 

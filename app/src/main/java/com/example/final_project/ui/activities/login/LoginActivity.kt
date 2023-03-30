@@ -74,8 +74,7 @@ class LoginActivity : AppCompatActivity() {
                 val jwt = JWT(it.accessToken)
                 val userID = jwt.getClaim("id").asString()
 
-                loginViewModel.setValues(it.accessToken, it.expires.toInt(), true)
-                Preferences.instance.setUserID(userID.toString())
+                loginViewModel.setValues(it.accessToken, it.expires.toInt(), true, userID.toString())
             }
         }
     }

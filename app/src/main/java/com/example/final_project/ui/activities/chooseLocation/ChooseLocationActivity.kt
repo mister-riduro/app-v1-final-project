@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.final_project.R
 import com.example.final_project.databinding.ActivityChooseLocationBinding
+import com.example.final_project.models.favoriteTourism.CreateFavoriteTourismBody
 import com.example.final_project.models.profiles.ProfileLocation
 import com.example.final_project.models.bynderbyte.BynderCity
 import com.example.final_project.models.bynderbyte.BynderProvince
@@ -59,6 +60,9 @@ class ChooseLocationActivity : AppCompatActivity() {
                     is Resource.Success -> {
                         response.data?.let { response ->
                             Log.d("SUCCESS", "Success Update User Location")
+
+                            createFavoriteTourism(userID)
+
                             val intent = Intent(this, LoginActivity::class.java)
                             startActivity(intent)
                         }
@@ -74,6 +78,26 @@ class ChooseLocationActivity : AppCompatActivity() {
                 }
             })
         }
+    }
+
+    fun createFavoriteTourism(userID: String) {
+        val tourisms: List<Long> = emptyList()
+        val userFavoriteTourismBody = CreateFavoriteTourismBody(userID, tourisms)
+
+        chooseLocationViewModel.createUserFavoriteTourism(userFavoriteTourismBody)
+        chooseLocationViewModel._userFavoriteTourismData.observe(this, Observer{ response ->
+            when(response) {
+                is Resource.Error -> {
+                    Log.d("ERROR FAV TOURISM", "Error occured on creating favorite tourism")
+                }
+                is Resource.Loading -> {
+
+                }
+                is Resource.Success -> {
+                    Log.d("OK FAV TOURISM", "Success creating favorite tourism")
+                }
+            }
+        })
     }
 
 
