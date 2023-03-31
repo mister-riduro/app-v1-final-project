@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.FavoriteHotelFragment">
+    tools:context=".ui.fragments.favoriteHotel.FavoriteHotelFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_favorite_hotel"

@@ -9,6 +9,9 @@ import com.example.final_project.models.profiles.Profile
 import com.example.final_project.models.profiles.ProfileLocation
 import com.example.final_project.models.bynderbyte.BynderCityResponse
 import com.example.final_project.models.bynderbyte.BynderProvinceResponse
+import com.example.final_project.models.favoriteHotel.CreateFavoriteHotelBody
+import com.example.final_project.models.favoriteHotel.UpsertFavoriteHotelResponse
+import com.example.final_project.models.favoriteHotel.userFavoriteHotel.UpdateUserFavoriteHotelBody
 import com.example.final_project.models.favoriteTourism.UpsertFavoriteTourismResponse
 import com.example.final_project.remote.repository.Repository
 import com.example.final_project.util.Resource
@@ -24,6 +27,7 @@ class ChooseLocationViewModel(
     val _provinceLiveData: MutableLiveData<Resource<BynderProvinceResponse>> = MutableLiveData()
     val _cityLiveData: MutableLiveData<Resource<BynderCityResponse>> = MutableLiveData()
     val _userFavoriteTourismData : MutableLiveData<Resource<UpsertFavoriteTourismResponse>> = MutableLiveData()
+    val _userFavoriteHotelData : MutableLiveData<Resource<UpsertFavoriteHotelResponse>> = MutableLiveData()
 
     val apiKey = "ffe27d799fb0769d7e1eec9e99127a0b539963b0682aa7c3f47f7c77e5d2b938"
 
@@ -41,6 +45,16 @@ class ChooseLocationViewModel(
         if (resp.isSuccessful) {
             resp.body()?.let {
                 _userFavoriteTourismData.postValue(Resource.Success(it))
+            }
+        }
+    }
+
+    fun createUserFavoriteHotel(userFavoriteHotelBody: CreateFavoriteHotelBody) = viewModelScope.launch {
+        _userFavoriteHotelData.postValue(Resource.Loading())
+        val resp = repository.createFavoriteHotel(userFavoriteHotelBody)
+        if (resp.isSuccessful) {
+            resp.body()?.let {
+                _userFavoriteHotelData.postValue(Resource.Success(it))
             }
         }
     }

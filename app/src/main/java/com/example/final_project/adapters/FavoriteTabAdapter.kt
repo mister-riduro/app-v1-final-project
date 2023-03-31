@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.final_project.ui.fragments.FavoriteHotelFragment
+import com.example.final_project.ui.fragments.favoriteHotel.FavoriteHotelFragment
 import com.example.final_project.ui.fragments.favoriteTourism.FavoriteTourismFragment
 
 private const val NUM_TABS = 2

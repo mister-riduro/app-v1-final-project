@@ -3,6 +3,14 @@ package com.example.final_project.remote.api
 import com.example.final_project.models.*
 import com.example.final_project.models.dto.ListTourismResponse
 import com.example.final_project.models.dto.ProvinceResponse
+import com.example.final_project.models.favoriteHotel.CreateFavoriteHotelBody
+import com.example.final_project.models.favoriteHotel.FavoriteHotelDataResponse
+import com.example.final_project.models.favoriteHotel.UpdateFavHotelBody
+import com.example.final_project.models.favoriteHotel.UpsertFavoriteHotelResponse
+import com.example.final_project.models.favoriteHotel.userFavoriteHotel.CreateUserFavoriteHotelBody
+import com.example.final_project.models.favoriteHotel.userFavoriteHotel.GetUserFavoriteHotelResponse
+import com.example.final_project.models.favoriteHotel.userFavoriteHotel.UpdateUserFavoriteHotelBody
+import com.example.final_project.models.favoriteHotel.userFavoriteHotel.UpsertUserFavoriteHotelResponse
 import com.example.final_project.models.favoriteTourism.*
 import com.example.final_project.models.favoriteTourism.userFavoriteTourism.CreateUserFavoriteTourismBody
 import com.example.final_project.models.favoriteTourism.userFavoriteTourism.GetUserFavoriteTourismResponse
@@ -60,27 +68,13 @@ interface ApiService {
         @Body profileLocation: ProfileLocation
     ): Response<Profile>
 
-    @GET("/items/hfacilities")
-    suspend fun getHotelFacilities(): Response<HotelFacilitiesSelectionResponse>
-
-    @GET("/items/hotels")
-    suspend fun getListHotels(
-        @Query("filter[hotel_city][_eq]") address: String,
-        @Query("filter[cluster][_eq]") cluster: Long
-    ): Response<HotelListResponse>
-
-    @GET("/items/hotels/{hotel_id}")
-    suspend fun getDetailHotel(
-        @Path("hotel_id") hotelID: Long,
-        @Query("fields") fieldFilter: String = "*.*,facilities.hfacilities_hfacilities_id.*"
-    ): Response<HotelDetailResponse>
-
     @Headers("Content-Type: application/json")
     @POST("/auth/login")
     suspend fun loginUser(
         @Body loginBody: LoginBody
     ): Response<LoginResponse>
 
+    // Favorite Tourism
     @Headers("Content-Type: application/json")
     @POST("/items/favorite_tourism")
     suspend fun createFavoriteTourism(
@@ -116,4 +110,57 @@ interface ApiService {
         @Query("filter[tourism_id][_eq]") tourismID: Long,
         @Query("filter[user_id][_eq]") userID: String
     ): Response<GetUserFavoriteTourismResponse>
+
+    // Hotel
+    @GET("/items/hfacilities")
+    suspend fun getHotelFacilities(): Response<HotelFacilitiesSelectionResponse>
+
+    @GET("/items/hotels")
+    suspend fun getListHotels(
+        @Query("filter[hotel_city][_eq]") address: String,
+        @Query("filter[cluster][_eq]") cluster: Long
+    ): Response<HotelListResponse>
+
+    @GET("/items/hotels/{hotel_id}")
+    suspend fun getDetailHotel(
+        @Path("hotel_id") hotelID: Long,
+        @Query("fields") fieldFilter: String = "*.*,facilities.hfacilities_hfacilities_id.*"
+    ): Response<HotelDetailResponse>
+
+    // Favorite Hotel
+    @Headers("Content-Type: application/json")
+    @POST("/items/favorite_hotel")
+    suspend fun createFavoriteHotel(
+        @Body createFavoriteHotelBody: CreateFavoriteHotelBody
+    ): Response<UpsertFavoriteHotelResponse>
+
+    @GET("/items/favorite_hotel")
+    suspend fun getFavoriteHotel(
+        @Query("filter[user_id][_eq]") user_id: String,
+        @Query("fields") fields: String = "*.*,hotels.hotels_hotel_id.*"):Response<FavoriteHotelDataResponse>
+
+    @PATCH("/items/favorite_hotel/{favorite_id}")
+    suspend fun updateFavoriteHotel(
+        @Path("favorite_id") favID: Long,
+        @Body updateFavHotelBody: UpdateFavHotelBody
+    ): Response<UpsertFavoriteHotelResponse>
+
+    @Headers("Content-Type: application/json")
+    @POST("items/user_favorite_hotel")
+    suspend fun createUserFavoriteHotel(
+        @Body createUserFavoriteHotelBody: CreateUserFavoriteHotelBody
+    ): Response<UpsertUserFavoriteHotelResponse>
+
+    @Headers("Content-Type: application/json")
+    @PATCH("items/user_favorite_hotel/{hotel_id}")
+    suspend fun updateUserFavoriteHotel(
+        @Path("hotel_id") hotelID: Long,
+        @Body updateUserFavoriteHotelBody: UpdateUserFavoriteHotelBody
+    ): Response<UpsertUserFavoriteHotelResponse>
+
+    @GET("items/user_favorite_hotel")
+    suspend fun getUserFavoriteHotel(
+        @Query("filter[hotel_id][_eq]") hotelID: Long,
+        @Query("filter[user_id][_eq]") userID: String
+    ): Response<GetUserFavoriteHotelResponse>
 }

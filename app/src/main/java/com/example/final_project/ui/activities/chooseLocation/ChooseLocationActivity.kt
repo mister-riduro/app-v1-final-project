@@ -13,6 +13,7 @@ import com.example.final_project.models.favoriteTourism.CreateFavoriteTourismBod
 import com.example.final_project.models.profiles.ProfileLocation
 import com.example.final_project.models.bynderbyte.BynderCity
 import com.example.final_project.models.bynderbyte.BynderProvince
+import com.example.final_project.models.favoriteHotel.CreateFavoriteHotelBody
 import com.example.final_project.remote.repository.Repository
 import com.example.final_project.ui.activities.login.LoginActivity
 import com.example.final_project.util.Resource
@@ -62,6 +63,7 @@ class ChooseLocationActivity : AppCompatActivity() {
                             Log.d("SUCCESS", "Success Update User Location")
 
                             createFavoriteTourism(userID)
+                            createFavoriteHotel(userID)
 
                             val intent = Intent(this, LoginActivity::class.java)
                             startActivity(intent)
@@ -95,6 +97,26 @@ class ChooseLocationActivity : AppCompatActivity() {
                 }
                 is Resource.Success -> {
                     Log.d("OK FAV TOURISM", "Success creating favorite tourism")
+                }
+            }
+        })
+    }
+
+    fun createFavoriteHotel(userID: String) {
+        val hotels: List<Long> = emptyList()
+        val userFavoriteHotelBody = CreateFavoriteHotelBody(userID, hotels)
+
+        chooseLocationViewModel.createUserFavoriteHotel(userFavoriteHotelBody)
+        chooseLocationViewModel._userFavoriteHotelData.observe(this, Observer { response ->
+            when(response) {
+                is Resource.Error -> {
+                    Log.d("ERROR FAV HOTEL", "Error occured on creating favorite hotel")
+                }
+                is Resource.Loading -> {
+
+                }
+                is Resource.Success -> {
+                    Log.d("OK FAV HOTEL", "Success creating favorite hotel")
                 }
             }
         })

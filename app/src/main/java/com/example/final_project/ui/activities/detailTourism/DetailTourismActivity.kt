@@ -106,7 +106,6 @@ class DetailTourismActivity : AppCompatActivity() {
                 }
                 is Resource.Success -> {
                     userFavTourismID = response.data?.data?.id!!
-                    Toast.makeText(this, "Success Create User Fav Tourism", Toast.LENGTH_SHORT).show()
                 }
             }
         })
@@ -124,7 +123,7 @@ class DetailTourismActivity : AppCompatActivity() {
 
                 }
                 is Resource.Success -> {
-                    Toast.makeText(this, "Success Update User Fav Tourism", Toast.LENGTH_SHORT).show()
+
                 }
             }
         })
@@ -190,8 +189,6 @@ class DetailTourismActivity : AppCompatActivity() {
                             updateUserFavoriteTourism(false)
 
                         }
-
-//                        refreshActivity()
                     }
                     createFacilities(response.data?.data?.facilities)
                 }
@@ -203,10 +200,6 @@ class DetailTourismActivity : AppCompatActivity() {
                 }
             }
         }
-    }
-
-    private fun refreshActivity() {
-        recreate()
     }
 
     private fun removeFavoriteTourism(userID: String, tourismID: Long?) {

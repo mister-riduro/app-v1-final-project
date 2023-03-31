@@ -46,7 +46,7 @@ class FavoriteTourismAdapter: RecyclerView.Adapter<FavoriteTourismAdapter.Favori
 
             setOnClickListener {
                 val intent = Intent(it.context, DetailTourismActivity::class.java)
-    //                    intent.putExtra("tourism_detail", DetailTourismObjects.detail_tourism_objects[position])
+                intent.putExtra("tourismID", tourism.tourismsTourismID.tourismID)
                 it.context.startActivity(intent)
             }
         }
