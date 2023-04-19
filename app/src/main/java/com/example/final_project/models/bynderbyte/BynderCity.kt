@@ -13,4 +13,8 @@ data class BynderCity(
 
     @SerializedName("name")
     val name: String
-)
+) {
+    override fun toString(): String {
+        return name
+    }
+}

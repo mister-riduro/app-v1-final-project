@@ -1,6 +1,7 @@
 package com.example.final_project.remote.api
 
 import com.example.final_project.util.Constants
+import com.example.final_project.util.Constants.Companion.LOCAL_API_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -16,7 +17,7 @@ class RetrofitMadeInstance {
                 .addInterceptor(logging)
                 .build()
             Retrofit.Builder()
-                .baseUrl(Constants.LOCAL_API_URL)
+                .baseUrl("$LOCAL_API_URL/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build()

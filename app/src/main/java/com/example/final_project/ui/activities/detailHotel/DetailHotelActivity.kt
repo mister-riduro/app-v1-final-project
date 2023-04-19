@@ -223,6 +223,8 @@ class DetailHotelActivity : AppCompatActivity() {
                     binding.tvPropertyType.text = response.data?.data?.propertyType
                     binding.tvRating.text = response.data?.data?.hotelRating.toString()
 
+                    hotelFacilitiesAdapter.differ.submitList(response.data?.data?.facilities)
+
                     toggleButton.setOnCheckedChangeListener {_, isChecked ->
                         Log.d("CHECK STATE CLICK", "$isChecked")
 
@@ -248,7 +250,7 @@ class DetailHotelActivity : AppCompatActivity() {
         hotelFacilitiesAdapter = HotelFacilitiesAdapter()
         binding.gridFacilities.apply {
             adapter = hotelFacilitiesAdapter
-            layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
+            layoutManager = GridLayoutManager(this.context, 3)
         }
     }
 }

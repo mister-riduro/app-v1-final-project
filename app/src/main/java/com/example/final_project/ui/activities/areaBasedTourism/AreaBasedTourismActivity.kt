@@ -38,6 +38,10 @@ class AreaBasedTourismActivity : AppCompatActivity() {
 
         setupRecyclerView()
 
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        supportActionBar?.setIcon(R.drawable.icon_arrow_left)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         areaBasedTourismViewModel._tourismLiveData.observe(this, Observer { response ->
             when(response) {
                 is Resource.Success -> {

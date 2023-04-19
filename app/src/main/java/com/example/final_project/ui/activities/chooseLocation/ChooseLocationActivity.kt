@@ -133,7 +133,9 @@ class ChooseLocationActivity : AppCompatActivity() {
                         val adapter = ArrayAdapter(
                             this,
                             R.layout.item_location,
-                            ArrayList(response.value.sortedBy { it.name })
+                            ArrayList(response.value.sortedBy {
+                                it.name
+                            })
                         )
                         binding.inputKota.setAdapter(adapter)
                     }

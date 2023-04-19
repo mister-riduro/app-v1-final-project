@@ -3,9 +3,11 @@ package com.example.final_project.ui.activities.listHotel
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.final_project.R
 import com.example.final_project.adapters.HotelListAdapter
 import com.example.final_project.databinding.ActivityListHotelBinding
 import com.example.final_project.models.hotel.RecommendationBody
@@ -36,8 +38,19 @@ class ListHotelActivity : AppCompatActivity() {
 
         setupRecyclerView()
 
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        supportActionBar?.setIcon(R.drawable.icon_arrow_left)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+
+
         listHotelViewModel = ViewModelProvider(this, listHotelViewModelFactory).get(ListHotelViewModel::class.java)
         fetchDataCluster(destination!!, recommendationBody)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return super.onSupportNavigateUp()
     }
 
     fun fetchDataCluster(destination: String, recommendationBody: RecommendationBody) {

@@ -32,26 +32,17 @@
                 android:textColor="@color/white"
                 android:textSize="20sp" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tf_destination"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            <AutoCompleteTextView
+                android:id="@+id/et_destination"
+                android:background="@drawable/rectangle_outline"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="52dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="16dp"
-                android:background="@drawable/rounded_rectangle_outline"
-                android:clipToOutline="true"
-                app:hintEnabled="false">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_destination"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/plus_jakarta_sans_regular"
-                    android:hint="Masukkan Destinasimu" />
-
-            </com.google.android.material.textfield.TextInputLayout>
+                android:fontFamily="@font/plus_jakarta_sans_regular"
+                android:paddingStart="12dp"
+                android:hint="Masukkan Destinasimu" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tf_rating"

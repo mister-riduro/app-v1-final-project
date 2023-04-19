@@ -4,10 +4,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.final_project.R
 import com.example.final_project.adapters.HotelFacilitiesSelectorAdapter
 import com.example.final_project.adapters.TypeBasedTourismAdapter
 import com.example.final_project.databinding.ActivityChooseHotelFacilitiesBinding
@@ -40,6 +42,11 @@ class ChooseHotelFacilitiesActivity : AppCompatActivity() {
 
         setupRecyclerView()
 
+        supportActionBar?.setIcon(R.drawable.icon_arrow_left)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        supportActionBar?.title = "Pilih Fasilitas Hotel"
+
         chooseHotelFacilitiesViewModel._hotelFacilitiesLiveData.observe(this, Observer { response ->
             when(response) {
                 is Resource.Success -> {
@@ -68,6 +75,17 @@ class ChooseHotelFacilitiesActivity : AppCompatActivity() {
             }
         })
 
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            android.R.id.home -> {
+                finish()
+                return true
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     private fun setupRecyclerView() {
