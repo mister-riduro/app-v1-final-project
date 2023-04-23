@@ -6,9 +6,9 @@ data class HotelDetailFacilitiesResponse(
     @SerializedName("id")
     val id: Long,
 
-    @SerializedName("hotel_hotel_id")
-    val hotelHotelID: Long,
+    @SerializedName("newhotels_hotel_id")
+    val newHotelsHotelID: Long,
 
-    @SerializedName("hfacilities_hfacilities_id")
-    val hfacilitiesHfacilitiesID: HotelDetailFacilities
+    @SerializedName("newhfacilities_hfacilitiesid")
+    val newHfacilitiesHfacilitiesID: HotelDetailFacilities
 )

@@ -112,19 +112,19 @@ interface ApiService {
     ): Response<GetUserFavoriteTourismResponse>
 
     // Hotel
-    @GET("/items/hfacilities")
+    @GET("/items/newhfacilities")
     suspend fun getHotelFacilities(): Response<HotelFacilitiesSelectionResponse>
 
-    @GET("/items/hotels")
+    @GET("/items/newhotels")
     suspend fun getListHotels(
-        @Query("filter[hotel_city][_eq]") address: String,
+        @Query("filter[hotel_city][_contains]") address: String,
         @Query("filter[cluster][_eq]") cluster: Long
     ): Response<HotelListResponse>
 
-    @GET("/items/hotels/{hotel_id}")
+    @GET("/items/newhotels/{hotel_id}")
     suspend fun getDetailHotel(
         @Path("hotel_id") hotelID: Long,
-        @Query("fields") fieldFilter: String = "*.*,facilities.hfacilities_hfacilities_id.*"
+        @Query("fields") fieldFilter: String = "*.*,facilities.newhfacilities_hfacilitiesid.*"
     ): Response<HotelDetailResponse>
 
     // Favorite Hotel

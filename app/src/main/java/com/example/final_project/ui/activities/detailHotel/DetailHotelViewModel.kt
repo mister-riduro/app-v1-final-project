@@ -22,7 +22,7 @@ class DetailHotelViewModel(
 ): AndroidViewModel(application) {
 
     val _hotelLiveData: MutableLiveData<Resource<HotelDetailResponse>> = MutableLiveData()
-    val fieldFilter = "*.*,facilities.hfacilities_hfacilities_id.*"
+    val fieldFilter = "*.*,facilities.newhfacilities_hfacilitiesid.*"
 
     val _favHotelLiveData: MutableLiveData<Resource<FavoriteHotelDataResponse>> = MutableLiveData()
     val favFieldFilter = "*.*,hotels.hotels_hotel_id.*"

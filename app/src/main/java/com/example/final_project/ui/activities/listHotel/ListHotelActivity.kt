@@ -42,8 +42,6 @@ class ListHotelActivity : AppCompatActivity() {
         supportActionBar?.setIcon(R.drawable.icon_arrow_left)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-
-
         listHotelViewModel = ViewModelProvider(this, listHotelViewModelFactory).get(ListHotelViewModel::class.java)
         fetchDataCluster(destination!!, recommendationBody)
     }

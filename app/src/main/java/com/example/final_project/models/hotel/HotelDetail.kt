@@ -34,10 +34,10 @@ data class HotelDetail(
     val maxPrice: Long,
 
     @SerializedName("latitude")
-    val latitude: Long,
+    val latitude: Double,
 
     @SerializedName("longitude")
-    val longitude: Long,
+    val longitude: Double,
 
     @SerializedName("cluster")
     val cluster: Long,
