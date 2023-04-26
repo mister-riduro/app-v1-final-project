@@ -1,4 +1,4 @@
-package com.example.final_project.models.favoriteHotel
+package com.example.final_project.models.favoriteHotel.favoriteHotel
 
 import com.google.gson.annotations.SerializedName
 

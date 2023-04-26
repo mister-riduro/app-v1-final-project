@@ -1,12 +1,13 @@
 package com.example.final_project.remote.api
 
 import com.example.final_project.models.*
+import com.example.final_project.models.distance.DistanceDataResponse
 import com.example.final_project.models.dto.ListTourismResponse
 import com.example.final_project.models.dto.ProvinceResponse
 import com.example.final_project.models.favoriteHotel.CreateFavoriteHotelBody
-import com.example.final_project.models.favoriteHotel.FavoriteHotelDataResponse
-import com.example.final_project.models.favoriteHotel.UpdateFavHotelBody
+import com.example.final_project.models.favoriteHotel.UpdateFavoriteHotelBody
 import com.example.final_project.models.favoriteHotel.UpsertFavoriteHotelResponse
+import com.example.final_project.models.favoriteHotel.favoriteHotelNew.NewFavoriteHotelResponse
 import com.example.final_project.models.favoriteHotel.userFavoriteHotel.CreateUserFavoriteHotelBody
 import com.example.final_project.models.favoriteHotel.userFavoriteHotel.GetUserFavoriteHotelResponse
 import com.example.final_project.models.favoriteHotel.userFavoriteHotel.UpdateUserFavoriteHotelBody
@@ -16,9 +17,9 @@ import com.example.final_project.models.favoriteTourism.userFavoriteTourism.Crea
 import com.example.final_project.models.favoriteTourism.userFavoriteTourism.GetUserFavoriteTourismResponse
 import com.example.final_project.models.favoriteTourism.userFavoriteTourism.UpdateUserFavoriteTourismBody
 import com.example.final_project.models.favoriteTourism.userFavoriteTourism.UpsertUserFavoriteTourismResponse
-import com.example.final_project.models.hotel.HotelDetailResponse
-import com.example.final_project.models.hotel.HotelFacilitiesSelectionResponse
-import com.example.final_project.models.hotel.HotelListResponse
+import com.example.final_project.models.hotel.hotelDetail.HotelDetailResponse
+import com.example.final_project.models.hotel.hotelFacilitiesSelection.HotelFacilitiesSelectionResponse
+import com.example.final_project.models.hotel.hotelList.HotelListResponse
 import com.example.final_project.models.login.LoginBody
 import com.example.final_project.models.login.LoginResponse
 import com.example.final_project.models.profiles.Profile
@@ -74,43 +75,6 @@ interface ApiService {
         @Body loginBody: LoginBody
     ): Response<LoginResponse>
 
-    // Favorite Tourism
-    @Headers("Content-Type: application/json")
-    @POST("/items/favorite_tourism")
-    suspend fun createFavoriteTourism(
-        @Body createFavoriteTourismBody: CreateFavoriteTourismBody
-    ): Response<UpsertFavoriteTourismResponse>
-
-    @GET("/items/favorite_tourism")
-    suspend fun getFavoriteTourism(
-        @Query("filter[user_id][_eq]") user_id: String,
-        @Query("fields") fields: String = "*.*,tourisms.tourisms_tourism_id.*"):Response<FavoriteTourismDataResponse>
-
-    @PATCH("/items/favorite_tourism/{favorite_id}")
-    suspend fun updateFavoriteTourism(
-        @Path("favorite_id") favID: Long,
-        @Body updateFavTourismBody: UpdateFavTourismBody
-    ): Response<UpsertFavoriteTourismResponse>
-
-    @Headers("Content-Type: application/json")
-    @POST("items/user_favorite_tourism")
-    suspend fun createUserFavoriteTourism(
-        @Body createUserFavoriteTourismBody: CreateUserFavoriteTourismBody
-    ): Response<UpsertUserFavoriteTourismResponse>
-
-    @Headers("Content-Type: application/json")
-    @PATCH("items/user_favorite_tourism/{tourism_id}")
-    suspend fun updateUserFavoriteTourism(
-        @Path("tourism_id") tourismID: Long,
-        @Body updateUserFavoriteTourismBody: UpdateUserFavoriteTourismBody
-    ): Response<UpsertUserFavoriteTourismResponse>
-
-    @GET("items/user_favorite_tourism")
-    suspend fun getUserFavoriteTourism(
-        @Query("filter[tourism_id][_eq]") tourismID: Long,
-        @Query("filter[user_id][_eq]") userID: String
-    ): Response<GetUserFavoriteTourismResponse>
-
     // Hotel
     @GET("/items/newhfacilities")
     suspend fun getHotelFacilities(): Response<HotelFacilitiesSelectionResponse>
@@ -124,43 +88,12 @@ interface ApiService {
     @GET("/items/newhotels/{hotel_id}")
     suspend fun getDetailHotel(
         @Path("hotel_id") hotelID: Long,
-        @Query("fields") fieldFilter: String = "*.*,facilities.newhfacilities_hfacilitiesid.*"
+        @Query("fields") fieldFilter: String = "*.*,facilities.newhfacilities_hfacilities_id.*"
     ): Response<HotelDetailResponse>
 
-    // Favorite Hotel
-    @Headers("Content-Type: application/json")
-    @POST("/items/favorite_hotel")
-    suspend fun createFavoriteHotel(
-        @Body createFavoriteHotelBody: CreateFavoriteHotelBody
-    ): Response<UpsertFavoriteHotelResponse>
-
-    @GET("/items/favorite_hotel")
-    suspend fun getFavoriteHotel(
-        @Query("filter[user_id][_eq]") user_id: String,
-        @Query("fields") fields: String = "*.*,hotels.hotels_hotel_id.*"):Response<FavoriteHotelDataResponse>
-
-    @PATCH("/items/favorite_hotel/{favorite_id}")
-    suspend fun updateFavoriteHotel(
-        @Path("favorite_id") favID: Long,
-        @Body updateFavHotelBody: UpdateFavHotelBody
-    ): Response<UpsertFavoriteHotelResponse>
-
-    @Headers("Content-Type: application/json")
-    @POST("items/user_favorite_hotel")
-    suspend fun createUserFavoriteHotel(
-        @Body createUserFavoriteHotelBody: CreateUserFavoriteHotelBody
-    ): Response<UpsertUserFavoriteHotelResponse>
-
-    @Headers("Content-Type: application/json")
-    @PATCH("items/user_favorite_hotel/{hotel_id}")
-    suspend fun updateUserFavoriteHotel(
-        @Path("hotel_id") hotelID: Long,
-        @Body updateUserFavoriteHotelBody: UpdateUserFavoriteHotelBody
-    ): Response<UpsertUserFavoriteHotelResponse>
-
-    @GET("items/user_favorite_hotel")
-    suspend fun getUserFavoriteHotel(
-        @Query("filter[hotel_id][_eq]") hotelID: Long,
-        @Query("filter[user_id][_eq]") userID: String
-    ): Response<GetUserFavoriteHotelResponse>
+    @GET("/items/distance")
+    suspend fun getNearestDestinationData(
+        @Query("fields") fieldFilter: String = "*.*,tourism_id.tourism_id.*",
+        @Query("filter[hotel_id][_eq]") hotelID: Long
+    ): Response<DistanceDataResponse>
 }

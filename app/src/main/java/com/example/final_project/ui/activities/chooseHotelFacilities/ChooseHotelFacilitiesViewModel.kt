@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.final_project.models.hotel.HotelFacilitiesSelectionResponse
+import com.example.final_project.models.hotel.hotelFacilitiesSelection.HotelFacilitiesSelectionResponse
 import com.example.final_project.remote.repository.Repository
 import com.example.final_project.util.Resource
 import kotlinx.coroutines.launch

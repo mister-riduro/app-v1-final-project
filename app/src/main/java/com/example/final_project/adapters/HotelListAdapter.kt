@@ -7,11 +7,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.final_project.databinding.ItemAreaBasedTourismBinding
 import com.example.final_project.databinding.ItemFavoriteHotelBinding
-import com.example.final_project.models.hotel.HotelList
-import com.example.final_project.models.tourism.DetailTourism
-import com.example.final_project.ui.activities.DetailTourismActivity
+import com.example.final_project.models.hotel.hotelList.HotelList
 import com.example.final_project.ui.activities.detailHotel.DetailHotelActivity
 import com.squareup.picasso.Picasso
 

@@ -1,4 +1,4 @@
-package com.example.final_project.models.favoriteHotel
+package com.example.final_project.models.favoriteHotel.favoriteHotel
 
 import com.google.gson.annotations.SerializedName
 
@@ -13,5 +13,5 @@ data class FavoriteHotelResponse(
     val userID: String,
 
     @SerializedName("hotels")
-    var hotels: List<FavoriteHotel>
+    var hotels: List<FavoriteHotels>
 )

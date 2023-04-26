@@ -14,10 +14,10 @@
         android:id="@+id/hotelFragment"
         android:title="@string/hotel"
         android:icon="@drawable/icon_nav_hotel"/>
-    <item
-        android:id="@+id/favoriteFragment"
-        android:title="@string/favorit"
-        android:icon="@drawable/icon_nav_favorit"/>
+<!--    <item-->
+<!--        android:id="@+id/favoriteFragment"-->
+<!--        android:title="@string/favorit"-->
+<!--        android:icon="@drawable/icon_nav_favorit"/>-->
     <item
         android:id="@+id/profilFragment"
         android:title="@string/profil"

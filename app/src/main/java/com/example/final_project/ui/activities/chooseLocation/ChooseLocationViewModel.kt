@@ -37,29 +37,6 @@ class ChooseLocationViewModel(
         _provinceLiveData.postValue(handleGetProvincesResponse(resp))
     }
 
-
-    fun createUserFavoriteTourism(userFavoriteTourismBody: CreateFavoriteTourismBody) = viewModelScope.launch {
-        _userFavoriteTourismData.postValue(Resource.Loading())
-
-        val resp = repository.createFavoriteTourism(userFavoriteTourismBody)
-        if (resp.isSuccessful) {
-            resp.body()?.let {
-                _userFavoriteTourismData.postValue(Resource.Success(it))
-            }
-        }
-    }
-
-    fun createUserFavoriteHotel(userFavoriteHotelBody: CreateFavoriteHotelBody) = viewModelScope.launch {
-        _userFavoriteHotelData.postValue(Resource.Loading())
-        val resp = repository.createFavoriteHotel(userFavoriteHotelBody)
-        if (resp.isSuccessful) {
-            resp.body()?.let {
-                _userFavoriteHotelData.postValue(Resource.Success(it))
-            }
-        }
-    }
-
-
     private fun handleGetProvincesResponse(response: Response<BynderProvinceResponse>): Resource<BynderProvinceResponse> {
         if (response.isSuccessful) {
             response.body()?.let { resultResponse ->

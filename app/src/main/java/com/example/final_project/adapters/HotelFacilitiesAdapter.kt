@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.final_project.databinding.ItemHotelFacilitiesBinding
-import com.example.final_project.models.hotel.HotelDetailFacilitiesResponse
+import com.example.final_project.models.hotel.hotelDetail.HotelDetailFacilitiesResponse
 import com.squareup.picasso.Picasso
 
 

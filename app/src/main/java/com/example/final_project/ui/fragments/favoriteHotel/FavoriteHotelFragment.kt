@@ -35,26 +35,26 @@ class FavoriteHotelFragment : Fragment() {
         val repository = Repository()
         val favoriteHotelViewModelFactory = FavoriteHotelViewModelFactory(repository)
 
-        favoriteHotelViewModel = ViewModelProvider(this, favoriteHotelViewModelFactory).get(FavoriteHotelViewModel::class.java)
-        val userID = favoriteHotelViewModel.getUserID()
-
-        favoriteHotelViewModel.getFavoriteHotel(userID)
-        setupRecyclerView()
-        favoriteHotelViewModel._hotelLiveData.observe(viewLifecycleOwner) { response ->
-            when(response) {
-                is Resource.Error -> {
-
-                }
-                is Resource.Loading -> {
-
-                }
-                is Resource.Success -> {
-                    response.data.let {
-                        favoriteHotelAdapter.differ.submitList(it?.data!![0].hotels)
-                    }
-                }
-            }
-        }
+//        favoriteHotelViewModel = ViewModelProvider(this, favoriteHotelViewModelFactory).get(FavoriteHotelViewModel::class.java)
+//        val userID = favoriteHotelViewModel.getUserID()
+//
+//        favoriteHotelViewModel.getFavoriteHotel(userID)
+//        setupRecyclerView()
+//        favoriteHotelViewModel._hotelLiveData.observe(viewLifecycleOwner) { response ->
+//            when(response) {
+//                is Resource.Error -> {
+//
+//                }
+//                is Resource.Loading -> {
+//
+//                }
+//                is Resource.Success -> {
+//                    response.data.let {
+//                        favoriteHotelAdapter.differ.submitList(it?.data?.get(0)?.hotels)
+//                    }
+//                }
+//            }
+//        }
     }
 
     private fun setupRecyclerView() {

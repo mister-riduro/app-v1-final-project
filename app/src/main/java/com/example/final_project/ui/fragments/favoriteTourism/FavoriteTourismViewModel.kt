@@ -14,18 +14,18 @@ class FavoriteTourismViewModel(private val repository: Repository): ViewModel() 
     val _tourismLiveData: MutableLiveData<Resource<FavoriteTourismDataResponse>> = MutableLiveData()
     val fieldFilter: String = "*.*,tourisms.tourisms_tourism_id.*"
 
-    fun getFavoriteTourism(userID: String) = viewModelScope.launch {
-        _tourismLiveData.postValue(Resource.Loading())
-        val resp = repository.getFavoriteTourism(userID, fieldFilter)
-
-        Log.d("FAV TOUR VM", "${resp.body()?.data}")
-
-        if (resp.isSuccessful) {
-            resp.body()?.let {
-                _tourismLiveData.postValue(Resource.Success(it))
-            }
-        }
-    }
+//    fun getFavoriteTourism(userID: String) = viewModelScope.launch {
+//        _tourismLiveData.postValue(Resource.Loading())
+//        val resp = repository.getFavoriteTourism(userID, fieldFilter)
+//
+//        Log.d("FAV TOUR VM", "${resp.body()?.data}")
+//
+//        if (resp.isSuccessful) {
+//            resp.body()?.let {
+//                _tourismLiveData.postValue(Resource.Success(it))
+//            }
+//        }
+//    }
 
     fun getUserID(): String {
         return repository.getUserID().toString()

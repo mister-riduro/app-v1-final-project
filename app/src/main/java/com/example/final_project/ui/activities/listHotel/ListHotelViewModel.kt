@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.final_project.models.hotel.*
+import com.example.final_project.models.hotel.hotelList.HotelListResponse
 import com.example.final_project.remote.repository.Repository
 import com.example.final_project.util.Resource
 import kotlinx.coroutines.launch

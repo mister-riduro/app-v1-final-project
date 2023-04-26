@@ -1,4 +1,4 @@
-package com.example.final_project.models.hotel
+package com.example.final_project.models.hotel.hotelFacilitiesSelection
 
 import com.google.gson.annotations.SerializedName
 

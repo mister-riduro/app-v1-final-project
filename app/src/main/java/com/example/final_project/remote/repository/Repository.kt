@@ -1,7 +1,7 @@
 package com.example.final_project.remote.repository
 
 import com.example.final_project.models.favoriteHotel.CreateFavoriteHotelBody
-import com.example.final_project.models.favoriteHotel.UpdateFavHotelBody
+import com.example.final_project.models.favoriteHotel.UpdateFavoriteHotelBody
 import com.example.final_project.models.favoriteHotel.userFavoriteHotel.CreateUserFavoriteHotelBody
 import com.example.final_project.models.favoriteHotel.userFavoriteHotel.UpdateUserFavoriteHotelBody
 import com.example.final_project.models.favoriteTourism.CreateFavoriteTourismBody
@@ -38,24 +38,7 @@ class Repository (){
         suspend fun getHotelFacilities() = RetrofitInstance.api.getHotelFacilities()
         suspend fun getListHotels(city: String, cluster: Long) = RetrofitInstance.api.getListHotels(city, cluster)
         suspend fun getDetailHotel(hotelID: Long, fieldFilter: String) = RetrofitInstance.api.getDetailHotel(hotelID, fieldFilter)
-
-        // Favorite Tourism
-        suspend fun getFavoriteTourism(userID: String, fieldFilter: String) = RetrofitInstance.api.getFavoriteTourism(userID, fieldFilter)
-        suspend fun createFavoriteTourism(createFavoriteTourismBody: CreateFavoriteTourismBody) = RetrofitInstance.api.createFavoriteTourism(createFavoriteTourismBody)
-        suspend fun updateFavoriteTourism(favoriteID: Long, updateFavTourismBody: UpdateFavTourismBody) = RetrofitInstance.api.updateFavoriteTourism(favoriteID, updateFavTourismBody)
-
-        suspend fun createUserFavoriteTourism(createUserFavoriteTourismBody: CreateUserFavoriteTourismBody) = RetrofitInstance.api.createUserFavoriteTourism(createUserFavoriteTourismBody)
-        suspend fun updateUserFavoriteTourism(userFavoriteTourismID: Long, updateUserFavoriteTourismBody: UpdateUserFavoriteTourismBody) = RetrofitInstance.api.updateUserFavoriteTourism(userFavoriteTourismID, updateUserFavoriteTourismBody)
-        suspend fun getUserFavoriteTourism(tourismID: Long, userID: String) = RetrofitInstance.api.getUserFavoriteTourism(tourismID, userID)
-
-        // Favorite Hotel
-        suspend fun getFavoriteHotel(userID: String, fieldFilter: String) = RetrofitInstance.api.getFavoriteHotel(userID, fieldFilter)
-        suspend fun createFavoriteHotel(createFavoriteHotelBody: CreateFavoriteHotelBody) = RetrofitInstance.api.createFavoriteHotel(createFavoriteHotelBody)
-        suspend fun updateFavoriteHotel(favoriteID: Long, updateFavHotelBody: UpdateFavHotelBody) = RetrofitInstance.api.updateFavoriteHotel(favoriteID, updateFavHotelBody)
-
-        suspend fun createUserFavoriteHotel(createUserFavoriteHotelBody: CreateUserFavoriteHotelBody) = RetrofitInstance.api.createUserFavoriteHotel(createUserFavoriteHotelBody)
-        suspend fun updateUserFavoriteHotel(userFavoriteHotelID: Long, updateUserFavoriteHotelBody: UpdateUserFavoriteHotelBody) = RetrofitInstance.api.updateUserFavoriteHotel(userFavoriteHotelID, updateUserFavoriteHotelBody)
-        suspend fun getUserFavoriteHotel(hotelID: Long, userID: String) = RetrofitInstance.api.getUserFavoriteHotel(hotelID, userID)
+        suspend fun getNearestDestination(fieldFilter: String, hotelID: Long) = RetrofitInstance.api.getNearestDestinationData(fieldFilter, hotelID)
 
         // Preferences
         fun setToken(value: String) = Preferences.instance.setToken(value)

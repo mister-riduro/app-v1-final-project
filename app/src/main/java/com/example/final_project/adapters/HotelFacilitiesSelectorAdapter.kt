@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.AsyncListDiffer
 import com.example.final_project.databinding.ItemHotelFacilitiesSelectionBinding
-import com.example.final_project.models.hotel.HotelFacilitiesSelection
+import com.example.final_project.models.hotel.hotelFacilitiesSelection.HotelFacilitiesSelection
 import com.squareup.picasso.Picasso
 
 class HotelFacilitiesSelectorAdapter(): RecyclerView.Adapter<HotelFacilitiesSelectorAdapter.HotelFacilitesSelectorViewHolder>() {

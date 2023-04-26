@@ -1,10 +1,8 @@
 package com.example.final_project.models.tourism
 
-import android.os.Parcelable
 import com.example.final_project.models.Routes
 import com.example.final_project.models.dto.TourismFacilitiesResponse
 import com.google.gson.annotations.SerializedName
-import kotlinx.android.parcel.Parcelize
 
 data class DetailTourism(
     @SerializedName("tourism_id")
@@ -31,8 +29,8 @@ data class DetailTourism(
     @SerializedName("tourism_city")
     val tourismCity: String,
 
-    @SerializedName("province_name")
-    val provinceName: String,
+    @SerializedName("tourism_province")
+    val tourismProvince: String,
 
     @SerializedName("open_hour")
     val openHour: String,

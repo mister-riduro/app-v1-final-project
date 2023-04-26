@@ -62,9 +62,6 @@ class ChooseLocationActivity : AppCompatActivity() {
                         response.data?.let { response ->
                             Log.d("SUCCESS", "Success Update User Location")
 
-                            createFavoriteTourism(userID)
-                            createFavoriteHotel(userID)
-
                             val intent = Intent(this, LoginActivity::class.java)
                             startActivity(intent)
                         }
@@ -82,45 +79,6 @@ class ChooseLocationActivity : AppCompatActivity() {
         }
     }
 
-    fun createFavoriteTourism(userID: String) {
-        val tourisms: List<Long> = emptyList()
-        val userFavoriteTourismBody = CreateFavoriteTourismBody(userID, tourisms)
-
-        chooseLocationViewModel.createUserFavoriteTourism(userFavoriteTourismBody)
-        chooseLocationViewModel._userFavoriteTourismData.observe(this, Observer{ response ->
-            when(response) {
-                is Resource.Error -> {
-                    Log.d("ERROR FAV TOURISM", "Error occured on creating favorite tourism")
-                }
-                is Resource.Loading -> {
-
-                }
-                is Resource.Success -> {
-                    Log.d("OK FAV TOURISM", "Success creating favorite tourism")
-                }
-            }
-        })
-    }
-
-    fun createFavoriteHotel(userID: String) {
-        val hotels: List<Long> = emptyList()
-        val userFavoriteHotelBody = CreateFavoriteHotelBody(userID, hotels)
-
-        chooseLocationViewModel.createUserFavoriteHotel(userFavoriteHotelBody)
-        chooseLocationViewModel._userFavoriteHotelData.observe(this, Observer { response ->
-            when(response) {
-                is Resource.Error -> {
-                    Log.d("ERROR FAV HOTEL", "Error occured on creating favorite hotel")
-                }
-                is Resource.Loading -> {
-
-                }
-                is Resource.Success -> {
-                    Log.d("OK FAV HOTEL", "Success creating favorite hotel")
-                }
-            }
-        })
-    }
 
 
     fun setupChooseCity(itemProvince: String) {

@@ -6,12 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.final_project.databinding.ItemFavoriteHotelBinding
-import com.example.final_project.models.favoriteHotel.FavoriteDetailHotel
-import com.example.final_project.models.favoriteHotel.FavoriteHotel
-import com.example.final_project.models.favoriteTourism.FavoriteTourism
-import com.example.final_project.ui.activities.DetailTourismActivity
+import com.example.final_project.models.favoriteHotel.favoriteHotelNew.Hotel
 import com.example.final_project.ui.activities.detailHotel.DetailHotelActivity
 import com.squareup.picasso.Picasso
 
@@ -23,12 +19,12 @@ class FavoriteHotelAdapter:RecyclerView.Adapter<FavoriteHotelAdapter.FavoriteHot
         return FavoriteHotelViewHolder(binding)
     }
 
-    private val differCallback = object : DiffUtil.ItemCallback<FavoriteHotel>() {
-        override fun areItemsTheSame(oldItem: FavoriteHotel, newItem: FavoriteHotel): Boolean {
+    private val differCallback = object : DiffUtil.ItemCallback<Hotel>() {
+        override fun areItemsTheSame(oldItem: Hotel, newItem: Hotel): Boolean {
             return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: FavoriteHotel, newItem: FavoriteHotel): Boolean {
+        override fun areContentsTheSame(oldItem: Hotel, newItem: Hotel): Boolean {
             return oldItem == newItem
         }
     }
@@ -44,15 +40,15 @@ class FavoriteHotelAdapter:RecyclerView.Adapter<FavoriteHotelAdapter.FavoriteHot
         val hotel = differ.currentList[position]
 
         holder.itemView.apply {
-            binding.tvHotelLocation.text = hotel.hotelsHotelID.hotelCity
-            binding.tvNameHotel.text = hotel.hotelsHotelID.hotelName
-            binding.tvHotelPrice.text = hotel.hotelsHotelID.minPrice.toString()
-            binding.tvPropertyType.text = hotel.hotelsHotelID.propertyType
-            Picasso.get().load(hotel.hotelsHotelID.hotelImage).into(binding.ivThumbnailHotel)
+            binding.tvHotelLocation.text = hotel.newhotelsHotelId.hotelCity
+            binding.tvNameHotel.text = hotel.newhotelsHotelId.hotelName
+            binding.tvHotelPrice.text = hotel.newhotelsHotelId.minPrice.toString()
+            binding.tvPropertyType.text = hotel.newhotelsHotelId.propertyType
+            Picasso.get().load(hotel.newhotelsHotelId.hotelImage).into(binding.ivThumbnailHotel)
 
             setOnClickListener {
                 val intent = Intent(it.context, DetailHotelActivity::class.java)
-                intent.putExtra("HOTEL_ID", hotel.hotelsHotelID.hotelID)
+                intent.putExtra("HOTEL_ID", hotel.newhotelsHotelId.hotelId)
                 it.context.startActivity(intent)
             }
         }

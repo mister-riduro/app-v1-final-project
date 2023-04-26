@@ -53,8 +53,6 @@ class DetailTourismActivity : AppCompatActivity() {
         toggleButton = binding.toggleFavorite
         toggleButton.background = getDrawable(R.drawable.icon_favorite_outline)
 
-        getFavoriteTourismID()
-        getUserFavoriteTourism()
         fetchDataTourism()
 
         supportActionBar?.hide()
@@ -64,87 +62,6 @@ class DetailTourismActivity : AppCompatActivity() {
         }
     }
 
-    private fun getUserFavoriteTourism() {
-        detailTourismViewModel.getUserFavoriteTourism(tourismID, userID)
-        detailTourismViewModel._getUserFavTourismLiveData.observe(this, Observer { response ->
-            when(response) {
-                is Resource.Error -> {
-
-                }
-                is Resource.Loading -> {
-
-                }
-                is Resource.Success -> {
-                    if (response.data?.data?.size == 0) {
-                        createUserFavoriteTourism(tourismID)
-                    } else {
-                        toggleButton.isChecked = response.data?.data!![0].isFavorite
-
-                        if (toggleButton.isChecked) {
-                            toggleButton.background = getDrawable(R.drawable.icon_favorite_filled)
-                        } else {
-                            toggleButton.background = getDrawable(R.drawable.icon_favorite_outline)
-                        }
-
-                        userFavTourismID = response.data.data[0].id
-                    }
-                }
-            }
-        })
-
-    }
-
-    private fun createUserFavoriteTourism(tourismID: Long) {
-        detailTourismViewModel.createUserFavoriteTourism(CreateUserFavoriteTourismBody(userID, tourismID, false))
-        detailTourismViewModel._createUserFavTourismLiveData.observe(this, Observer { response ->
-            when (response) {
-                is Resource.Error -> {
-
-                }
-                is Resource.Loading -> {
-
-                }
-                is Resource.Success -> {
-                    userFavTourismID = response.data?.data?.id!!
-                }
-            }
-        })
-    }
-
-    private fun updateUserFavoriteTourism(isFavorite: Boolean) {
-        val updateUserFavTourismBody = UpdateUserFavoriteTourismBody(isFavorite)
-        detailTourismViewModel.updateUserFavoriteTourism(userFavTourismID,updateUserFavTourismBody)
-        detailTourismViewModel._updateUserFavTourismLiveData.observe(this, Observer { response ->
-            when(response) {
-                is Resource.Error -> {
-
-                }
-                is Resource.Loading -> {
-
-                }
-                is Resource.Success -> {
-
-                }
-            }
-        })
-    }
-
-    private fun getFavoriteTourismID() {
-        detailTourismViewModel.getFavoriteTourism(detailTourismViewModel.getUserID())
-        detailTourismViewModel._favTourismID.observe(this) {
-            when(it) {
-                is Resource.Error -> {
-
-                }
-                is Resource.Loading -> {
-
-                }
-                is Resource.Success -> {
-                    favID = it.data!!
-                }
-            }
-        }
-    }
 
     private fun fetchDataTourism() {
         detailTourismViewModel.getDetailTourism(tourismID)
@@ -174,22 +91,6 @@ class DetailTourismActivity : AppCompatActivity() {
                         showDialogOtherInformation(routes, timeTaken, roadCondition)
                     }
 
-                    toggleButton.setOnCheckedChangeListener {_, isChecked ->
-                        Log.d("CHECK STATE CLICK", "$isChecked")
-
-                        if (isChecked) {
-                            toggleButton.background = getDrawable(R.drawable.icon_favorite_filled)
-                            tourismTourismID.add(FavoriteTourismID(tourismID))
-                            updateFavorite(tourismTourismID.toList(), favID)
-                            updateUserFavoriteTourism(true)
-
-                        } else {
-                            toggleButton.background = getDrawable(R.drawable.icon_favorite_outline)
-                            removeFavoriteTourism(userID, tourismID)
-                            updateUserFavoriteTourism(false)
-
-                        }
-                    }
                     createFacilities(response.data?.data?.facilities)
                 }
                 is Resource.Error -> {
@@ -202,67 +103,6 @@ class DetailTourismActivity : AppCompatActivity() {
         }
     }
 
-    private fun removeFavoriteTourism(userID: String, tourismID: Long?) {
-        detailTourismViewModel.getFavoriteTourism(userID)
-        detailTourismViewModel._favTourismLiveData.observe(this, Observer { response ->
-            when(response) {
-                is Resource.Error -> {
-                    Log.d("ERROR FAV TOURISM", "Error retrieve favorite tourism data")
-                }
-                is Resource.Loading -> {
-
-                }
-                is Resource.Success -> {
-                    val tourisms = response.data?.data?.get(0)?.tourisms
-                    Log.d("TOURISMS DATA", "$tourisms")
-
-                    if (tourisms!!.isNotEmpty()) {
-                        tourisms.forEach {
-                            tourismTourismID.add(FavoriteTourismID(it.tourismsTourismID.tourismID))
-                        }
-                    }
-
-                    Log.d("TOURISMTOURISMID 1", "${tourismTourismID.size}")
-
-                    tourisms.forEach {
-                        if (tourismID == it.tourismsTourismID.tourismID) {
-                            tourismTourismID.remove(FavoriteTourismID(it.tourismsTourismID.tourismID))
-                        }
-                    }
-
-                    Log.d("TOURISMTOURISMID 2", "${tourismTourismID.size}")
-
-                    Log.d("TOURISMTOURISMID BODY", "${tourismTourismID.toList()}")
-
-                    updateFavorite(tourismTourismID.toList(), favID)
-
-                    tourismTourismID.clear()
-                }
-            }
-
-        })
-    }
-
-    private fun updateFavorite(tourismTourismID: List<FavoriteTourismID>, favoriteID: Long?) {
-        val updateFavTourismBody = UpdateFavTourismBody(tourismTourismID)
-
-        Log.d("UPFAV TOURISM BODY", "$updateFavTourismBody")
-
-        detailTourismViewModel.updateFavoriteTourism(favoriteID!!, updateFavTourismBody)
-        detailTourismViewModel._updateFavTourismLiveData.observe(this, Observer { response ->
-            when(response) {
-                is Resource.Error -> {
-                    Log.d("ERROR FAV TOURISM", "Error update favorite tourism data")
-                }
-                is Resource.Loading -> {
-
-                }
-                is Resource.Success -> {
-                    Toast.makeText(this, "Success update favorite tourism", Toast.LENGTH_SHORT).show()
-                }
-            }
-        })
-    }
 
     private fun showDialogTourismDesc(desc: String?) {
         val dialog = BottomSheetDialog(this)

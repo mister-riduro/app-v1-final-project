@@ -37,26 +37,26 @@ class FavoriteTourismFragment : Fragment() {
         val repository = Repository()
         val favoriteTourismViewModelFactory = FavoriteTourismViewModelFactory(repository)
 
-        favTourismViewModel = ViewModelProvider(this, favoriteTourismViewModelFactory).get(FavoriteTourismViewModel::class.java)
-        val userID = favTourismViewModel.getUserID()
-
-        favTourismViewModel.getFavoriteTourism(userID)
-        setupRecyclerView()
-        favTourismViewModel._tourismLiveData.observe(viewLifecycleOwner) { response ->
-            when(response) {
-                is Resource.Error -> {
-
-                }
-                is Resource.Loading -> {
-
-                }
-                is Resource.Success -> {
-                    response.data.let {
-                        favoriteTourismAdapter.differ.submitList(it?.data!![0].tourisms)
-                    }
-                }
-            }
-        }
+//        favTourismViewModel = ViewModelProvider(this, favoriteTourismViewModelFactory).get(FavoriteTourismViewModel::class.java)
+//        val userID = favTourismViewModel.getUserID()
+//
+//        favTourismViewModel.getFavoriteTourism(userID)
+//        setupRecyclerView()
+//        favTourismViewModel._tourismLiveData.observe(viewLifecycleOwner) { response ->
+//            when(response) {
+//                is Resource.Error -> {
+//
+//                }
+//                is Resource.Loading -> {
+//
+//                }
+//                is Resource.Success -> {
+//                    response.data.let {
+//                        favoriteTourismAdapter.differ.submitList(it?.data!![0].tourisms)
+//                    }
+//                }
+//            }
+//        }
     }
 
     fun setupRecyclerView() {

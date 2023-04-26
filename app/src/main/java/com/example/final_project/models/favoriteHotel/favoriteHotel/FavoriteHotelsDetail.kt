@@ -1,8 +1,9 @@
-package com.example.final_project.models.hotel
+package com.example.final_project.models.favoriteHotel.favoriteHotel
 
 import com.google.gson.annotations.SerializedName
 
-data class HotelList (
+
+data class FavoriteHotelsDetail(
     @SerializedName("hotel_id")
     val hotelID: Long,
 
@@ -18,14 +19,14 @@ data class HotelList (
     @SerializedName("hotel_city")
     val hotelCity: String,
 
-    @SerializedName("province_name")
-    val provinceName: String,
+    @SerializedName("hotel_province")
+    val hotelProvince: String,
 
     @SerializedName("hotel_address")
     val hotelAddress: String,
 
     @SerializedName("hotel_rating")
-    val hotelRating: Double,
+    val hotelRating: String,
 
     @SerializedName("min_price")
     val minPrice: Long,
@@ -34,10 +35,10 @@ data class HotelList (
     val maxPrice: Long,
 
     @SerializedName("latitude")
-    val latitude: Double,
+    val latitude: Long,
 
     @SerializedName("longitude")
-    val longitude: Double,
+    val longitude: Long,
 
     @SerializedName("cluster")
     val cluster: Long,

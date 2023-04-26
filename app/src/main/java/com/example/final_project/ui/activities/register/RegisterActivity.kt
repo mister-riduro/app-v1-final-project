@@ -33,7 +33,7 @@ class RegisterActivity : AppCompatActivity() {
 
         val repository = Repository()
         val registerViewModelFactory = RegisterViewModelFactory(repository, application)
-        val userRole = "af80f2d4-425f-4c3a-8f5f-f817cdebfb01"
+        val userRole = "04fdebd7-0de5-4bba-a02a-b8546dd65eec"
 
         registerViewModel = ViewModelProvider(this, registerViewModelFactory).get(
             RegisterViewModel::class.java
