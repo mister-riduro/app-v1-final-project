@@ -3,6 +3,7 @@ package com.example.final_project.ui.activities.typeBasedTourism
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -31,6 +32,10 @@ class TypeBasedTourismActivity : AppCompatActivity() {
         typeBasedTourismViewModel.getTourismByType(payload.toString())
         setupRecyclerView()
 
+        supportActionBar?.title = payload.toString()
+        supportActionBar?.setIcon(R.drawable.icon_arrow_left)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         typeBasedTourismViewModel._tourismLiveData.observe(this, Observer { response ->
             when(response) {
                 is Resource.Success -> {
@@ -48,8 +53,17 @@ class TypeBasedTourismActivity : AppCompatActivity() {
                 }
             }
         })
+    }
 
-        supportActionBar?.setIcon(R.drawable.icon_arrow_left)
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            android.R.id.home -> {
+                finish()
+                return true
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     private fun setupRecyclerView() {

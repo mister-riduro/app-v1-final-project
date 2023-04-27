@@ -3,6 +3,7 @@ package com.example.final_project.ui.activities.areaBasedTourism
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
@@ -65,6 +66,17 @@ class AreaBasedTourismActivity : AppCompatActivity() {
 
         supportActionBar?.title = "Wisata $provinceName"
         supportActionBar?.setIcon(R.drawable.icon_arrow_left)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            android.R.id.home -> {
+                finish()
+                return true
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     private fun setupRecyclerView() {

@@ -20,10 +20,10 @@ import com.example.final_project.remote.preferences.Preferences
 
 class Repository (){
 
-        suspend fun getDetailTourism(tourismID: Long, fieldFilter: String) = RetrofitInstance.api.getDetailTourism(tourismID, fieldFilter)
-        suspend fun getTourismByType(fieldFilter:String, tourismType: String) = RetrofitInstance.api.getTourismByType(fieldFilter, tourismType)
+        suspend fun getDetailTourism(tourismID: Int, fieldFilter: String) = RetrofitInstance.api.getDetailTourism(tourismID, fieldFilter)
+        suspend fun getTourismByType(tourismType: String) = RetrofitInstance.api.getTourismByType(tourismType)
         suspend fun getAllProvinces() = RetrofitInstance.api.getAllProvinces()
-        suspend fun getTourismByProvince(fieldFilter: String, tourismProvince: String) = RetrofitInstance.api.getTourismByProvince(fieldFilter, tourismProvince)
+        suspend fun getTourismByProvince(tourismProvince: String) = RetrofitInstance.api.getTourismByProvince(tourismProvince)
         suspend fun getUserData(userID: String) = RetrofitInstance.api.getUserData(userID)
         suspend fun createUser(profileBody: ProfileBody) = RetrofitInstance.api.createUser(profileBody)
         suspend fun updateUserLocation(userID: String, profileLocation: ProfileLocation) = RetrofitInstance.api.updateUserLocation(userID, profileLocation)

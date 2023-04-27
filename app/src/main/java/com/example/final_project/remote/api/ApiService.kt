@@ -2,21 +2,9 @@ package com.example.final_project.remote.api
 
 import com.example.final_project.models.*
 import com.example.final_project.models.distance.DistanceDataResponse
-import com.example.final_project.models.dto.ListTourismResponse
+import com.example.final_project.models.tourism.listTourism.ListTourismResponse
 import com.example.final_project.models.dto.ProvinceResponse
-import com.example.final_project.models.favoriteHotel.CreateFavoriteHotelBody
-import com.example.final_project.models.favoriteHotel.UpdateFavoriteHotelBody
-import com.example.final_project.models.favoriteHotel.UpsertFavoriteHotelResponse
-import com.example.final_project.models.favoriteHotel.favoriteHotelNew.NewFavoriteHotelResponse
-import com.example.final_project.models.favoriteHotel.userFavoriteHotel.CreateUserFavoriteHotelBody
-import com.example.final_project.models.favoriteHotel.userFavoriteHotel.GetUserFavoriteHotelResponse
-import com.example.final_project.models.favoriteHotel.userFavoriteHotel.UpdateUserFavoriteHotelBody
-import com.example.final_project.models.favoriteHotel.userFavoriteHotel.UpsertUserFavoriteHotelResponse
 import com.example.final_project.models.favoriteTourism.*
-import com.example.final_project.models.favoriteTourism.userFavoriteTourism.CreateUserFavoriteTourismBody
-import com.example.final_project.models.favoriteTourism.userFavoriteTourism.GetUserFavoriteTourismResponse
-import com.example.final_project.models.favoriteTourism.userFavoriteTourism.UpdateUserFavoriteTourismBody
-import com.example.final_project.models.favoriteTourism.userFavoriteTourism.UpsertUserFavoriteTourismResponse
 import com.example.final_project.models.hotel.hotelDetail.HotelDetailResponse
 import com.example.final_project.models.hotel.hotelFacilitiesSelection.HotelFacilitiesSelectionResponse
 import com.example.final_project.models.hotel.hotelList.HotelListResponse
@@ -38,22 +26,20 @@ interface ApiService {
 
     @GET("/items/tourisms/{tourism_id}")
     suspend fun getDetailTourism(
-        @Path("tourism_id") tourism_id: Long,
+        @Path("tourism_id") tourism_id: Int,
         @Query("fields") fields: String = "*.*,routes.routes_id,facilities.tfacilities_tfacilities_id.*"): Response<DetailTourismResponse>
 
     @GET("/items/tourisms")
     suspend fun getTourismByType(
-        @Query("fields") fields: String = "*.*,routes.routes_id_routes_id,facilities.tfacilities_tfacilities_id.*",
         @Query("filter[tourism_type][_eq]") tourismType: String):
             Response<ListTourismResponse>
 
-    @GET("/items/provinces")
+    @GET("/items/province")
     suspend fun getAllProvinces(): Response<ProvinceResponse>
 
     @GET("/items/tourisms")
     suspend fun getTourismByProvince(
-        @Query("fields") fields: String = "*.*,routes.routes_id_routes_id,facilities.tfacilities_tfacilities_id.*",
-        @Query("filter[province_name][_eq]") tourismProvince: String
+        @Query("filter[tourism_province][_eq]") tourismProvince: String
     ): Response<ListTourismResponse>
 
     @Headers("Content-Type: application/json")

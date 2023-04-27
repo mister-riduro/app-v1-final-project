@@ -17,4 +17,7 @@ data class Province(
 
     @SerializedName("province_image")
     val provinceImage: String,
+
+    @SerializedName("province_tourism")
+    val provinceTourism: List<Int>,
 )

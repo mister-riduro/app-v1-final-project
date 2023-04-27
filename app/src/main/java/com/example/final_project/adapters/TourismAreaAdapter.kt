@@ -1,15 +1,18 @@
 package com.example.final_project.adapters
 
 import android.content.Intent
+import android.opengl.Visibility
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.final_project.databinding.ItemTourismAreaBinding
 import com.example.final_project.models.Province
 import com.example.final_project.ui.activities.areaBasedTourism.AreaBasedTourismActivity
+import com.example.final_project.util.Constants
 import com.squareup.picasso.Picasso
 
 class TourismAreaAdapter: RecyclerView.Adapter<TourismAreaAdapter.TourismAreaViewHolder>() {
@@ -36,8 +39,18 @@ class TourismAreaAdapter: RecyclerView.Adapter<TourismAreaAdapter.TourismAreaVie
         val tourism = differ.currentList[position]
 
         holder.itemView.apply {
-            Picasso.get().isLoggingEnabled = true
-            Picasso.get().load(tourism.provinceImage).into(binding.ivTourismArea)
+            try {
+                Picasso.get().isLoggingEnabled = true
+                val link = "${Constants.BASE_URL}/assets/${tourism.provinceImage}"
+                Picasso.get().load(link).into(binding.ivTourismArea)
+            } catch (e: Exception) {
+                Log.d("ERROR IMAGE TOURISM", "Failed load image")
+            }
+
+            val tourismTotal = tourism.provinceTourism.size
+            binding.tvAmountTourism.text = "$tourismTotal Objek Wisata"
+            binding.tvDescAmount.isVisible = false
+
             binding.tvArea.text = tourism.provinceName
 
             Log.d("TV AREA", binding.tvArea.text.toString())

@@ -144,18 +144,6 @@
             android:layout_marginStart="12dp"
             android:layout_marginTop="20dp">
 
-            <TextView
-                android:id="@+id/tv_prefix_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                android:text="Rp"
-                android:textSize="16sp"
-                android:lineSpacingExtra="4sp"
-                android:fontFamily="@font/plus_jakarta_sans_bold"
-                android:textColor="@color/text_grey_primary" />
 
             <TextView
                 android:id="@+id/tv_hotel_price"
@@ -163,7 +151,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tv_prefix_price"
+                app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="4dp"
                 android:text="1.800.000"
                 android:textSize="16sp"

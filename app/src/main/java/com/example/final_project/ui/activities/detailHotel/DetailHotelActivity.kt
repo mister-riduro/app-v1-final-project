@@ -20,6 +20,8 @@ import com.example.final_project.models.favoriteHotel.userFavoriteHotel.UpdateUs
 import com.example.final_project.remote.repository.Repository
 import com.example.final_project.util.Resource
 import com.squareup.picasso.Picasso
+import java.text.NumberFormat
+import java.util.*
 
 class DetailHotelActivity : AppCompatActivity() {
 
@@ -84,10 +86,20 @@ class DetailHotelActivity : AppCompatActivity() {
 
                 }
                 is Resource.Success -> {
-                    Picasso.get().load(response.data?.data?.hotelImage).into(binding.imageDetailHotel)
+                    try {
+                        Picasso.get().load(response.data?.data?.hotelImage).into(binding.imageDetailHotel)
+                    } catch (e: Exception) {
+                        Log.d("LOAD IMAGE ERROR", "No Image Data")
+                    }
+
                     binding.tvHotelLocation.text = response.data?.data?.hotelCity
                     binding.tvHotelName.text = response.data?.data?.hotelName
-                    binding.tvHotelPrice.text = response.data?.data?.minPrice.toString()
+
+                    val formattedPrice: NumberFormat = NumberFormat.getCurrencyInstance()
+                    formattedPrice.maximumFractionDigits = 0
+                    formattedPrice.currency = Currency.getInstance("IDR")
+
+                    binding.tvHotelPrice.text = formattedPrice.format(response.data?.data?.minPrice).toString()
 
                     binding.tvPropertyType.text = response.data?.data?.propertyType
                     binding.tvRating.text = response.data?.data?.hotelRating.toString()

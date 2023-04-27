@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.final_project.models.dto.ListTourismResponse
+import com.example.final_project.models.tourism.listTourism.ListTourismResponse
 import com.example.final_project.remote.repository.Repository
 import com.example.final_project.util.Resource
 import kotlinx.coroutines.launch
@@ -19,7 +19,7 @@ class AreaBasedTourismViewModel(
 
     fun getTourismByProvince(tourismProvince: String) = viewModelScope.launch {
         _tourismLiveData.postValue(Resource.Loading())
-        val resp = repository.getTourismByProvince(fieldFilter, tourismProvince)
+        val resp = repository.getTourismByProvince(tourismProvince)
         _tourismLiveData.postValue(handleTourismByProvinceResponse(resp))
     }
 

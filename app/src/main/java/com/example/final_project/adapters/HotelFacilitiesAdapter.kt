@@ -1,5 +1,6 @@
 package com.example.final_project.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -41,7 +42,11 @@ class HotelFacilitiesAdapter: RecyclerView.Adapter<HotelFacilitiesAdapter.HotelF
         val facilities = differ.currentList[position]
 
         holder.itemView.apply {
-            Picasso.get().load(facilities.newHfacilitiesHfacilitiesID.facilitiesImage).into(binding.ivIconFacilities)
+            try {
+                Picasso.get().load(facilities.newHfacilitiesHfacilitiesID.facilitiesImage).into(binding.ivIconFacilities)
+            } catch (e: Exception) {
+                Log.d("LOAD IMAGE ERROR", "No Image Data")
+            }
             binding.tvFacilitiesHotel.text = facilities.newHfacilitiesHfacilitiesID.facilitiesName
         }
     }

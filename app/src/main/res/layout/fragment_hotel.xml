@@ -34,10 +34,11 @@
 
             <AutoCompleteTextView
                 android:id="@+id/et_destination"
-                android:background="@drawable/rectangle_outline"
+                android:background="@drawable/rounded_rectangle_outline"
                 android:layout_width="match_parent"
-                android:layout_height="52dp"
+                android:layout_height="48dp"
                 android:layout_marginStart="16dp"
+                style="@style/RoundedImage"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="16dp"
                 android:fontFamily="@font/plus_jakarta_sans_regular"

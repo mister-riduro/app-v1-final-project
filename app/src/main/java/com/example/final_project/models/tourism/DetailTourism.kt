@@ -2,11 +2,12 @@ package com.example.final_project.models.tourism
 
 import com.example.final_project.models.Routes
 import com.example.final_project.models.dto.TourismFacilitiesResponse
+import com.example.final_project.models.tourism.tourismImage.ImageData
 import com.google.gson.annotations.SerializedName
 
 data class DetailTourism(
     @SerializedName("tourism_id")
-    val tourismID: Long,
+    val tourismID: Int,
 
     @SerializedName("created_at")
     val createdAt: String,
@@ -21,7 +22,7 @@ data class DetailTourism(
     val tourismAddress: String,
 
     @SerializedName("tourism_image")
-    val tourismImage: String,
+    val tourismImage: ImageData,
 
     @SerializedName("tourism_type")
     val tourismType: String,
@@ -32,11 +33,8 @@ data class DetailTourism(
     @SerializedName("tourism_province")
     val tourismProvince: String,
 
-    @SerializedName("open_hour")
-    val openHour: String,
-
-    @SerializedName("close_hour")
-    val closeHour: String,
+    @SerializedName("operational_hour")
+    val operationalHour: String,
 
     @SerializedName("tourism_description")
     val tourismDescription: String,

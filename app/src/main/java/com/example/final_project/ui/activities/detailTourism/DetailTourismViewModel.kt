@@ -10,6 +10,7 @@ import com.example.final_project.models.favoriteTourism.userFavoriteTourism.GetU
 import com.example.final_project.models.favoriteTourism.userFavoriteTourism.UpdateUserFavoriteTourismBody
 import com.example.final_project.models.favoriteTourism.userFavoriteTourism.UpsertUserFavoriteTourismResponse
 import com.example.final_project.models.tourism.DetailTourismResponse
+import com.example.final_project.models.tourism.tourismImage.ImageDataResponse
 import com.example.final_project.remote.repository.Repository
 import com.example.final_project.util.Resource
 import kotlinx.coroutines.launch
@@ -20,9 +21,7 @@ class DetailTourismViewModel(
 
     val _tourismLiveData: MutableLiveData<Resource<DetailTourismResponse>> = MutableLiveData()
     val fieldFilter = "*.*,routes.routes_id,facilities.tfacilities_tfacilities_id.*"
-
-
-    fun getDetailTourism(tourismID: Long) = viewModelScope.launch {
+    fun getDetailTourism(tourismID: Int) = viewModelScope.launch {
         _tourismLiveData.postValue(Resource.Loading())
         val resp = repository.getDetailTourism(tourismID, fieldFilter)
         if (resp.isSuccessful) {

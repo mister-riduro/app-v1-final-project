@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.final_project.models.dto.ListTourismResponse
+import com.example.final_project.models.tourism.listTourism.ListTourismResponse
 import com.example.final_project.remote.repository.Repository
 import com.example.final_project.util.Resource
 import kotlinx.coroutines.launch
@@ -19,7 +19,7 @@ class TypeBasedTourismViewModel (
     val fieldFilter: String = "*.*,routes.routes_id_routes_id,facilities.tfacilities_tfacilities_id.*"
     fun getTourismByType(tourismType: String) = viewModelScope.launch {
         _tourismLiveData.postValue(Resource.Loading())
-        val resp = repository.getTourismByType(fieldFilter, tourismType)
+        val resp = repository.getTourismByType(tourismType)
         _tourismLiveData.postValue(handleTourismByTypeResponse(resp))
     }
 

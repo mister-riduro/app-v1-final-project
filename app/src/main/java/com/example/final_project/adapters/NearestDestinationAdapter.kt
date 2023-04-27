@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.final_project.databinding.ItemNearestDestinationBinding
 import com.example.final_project.models.distance.DistanceData
+import com.example.final_project.util.Constants
 import com.squareup.picasso.Picasso
 
 class NearestDestinationAdapter: RecyclerView.Adapter<NearestDestinationAdapter.NearestDestinationViewHolder>() {
@@ -43,14 +44,17 @@ class NearestDestinationAdapter: RecyclerView.Adapter<NearestDestinationAdapter.
 
         holder.itemView.apply {
             try {
-                Picasso.get().load(nearestDestination.distanceTourismData.tourismImage.toString()).into(binding.ivTourismArea)
+                val link = "${Constants.BASE_URL}/assets/${nearestDestination.distanceTourismData.tourismImage}"
+                Picasso.get().load(link).into(binding.ivTourismArea)
             } catch (e: Exception) {
                 Log.d("LOAD IMAGE ERROR", "No Image Data")
             }
 
             binding.tvTourismName.text = nearestDestination.distanceTourismData.tourismName
             binding.tvTourismType.text = nearestDestination.distanceTourismData.tourismType
-            binding.tvDistance.text = nearestDestination.distance.toString()
+
+            val formattedDistance = String.format("%.2f", nearestDestination.distance).toDouble()
+            binding.tvDistance.text = formattedDistance.toString()
         }
     }
 

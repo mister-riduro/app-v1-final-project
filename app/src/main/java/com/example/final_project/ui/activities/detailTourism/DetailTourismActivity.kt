@@ -1,10 +1,8 @@
 package com.example.final_project.ui.activities
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,15 +12,14 @@ import com.example.final_project.databinding.ActivityTourismDetailBinding
 import com.example.final_project.models.Routes
 import com.example.final_project.models.dto.TourismFacilitiesResponse
 import com.example.final_project.models.favoriteTourism.FavoriteTourismID
-import com.example.final_project.models.favoriteTourism.UpdateFavTourismBody
-import com.example.final_project.models.favoriteTourism.userFavoriteTourism.CreateUserFavoriteTourismBody
-import com.example.final_project.models.favoriteTourism.userFavoriteTourism.UpdateUserFavoriteTourismBody
 import com.example.final_project.remote.repository.Repository
 import com.example.final_project.ui.activities.detailTourism.DetailTourismViewModel
 import com.example.final_project.ui.activities.detailTourism.DetailTourismViewModelFactory
+import com.example.final_project.util.Constants.Companion.BASE_URL
 import com.example.final_project.util.Resource
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.chip.Chip
+import com.squareup.picasso.Picasso
 
 class DetailTourismActivity : AppCompatActivity() {
     private lateinit var binding: ActivityTourismDetailBinding
@@ -33,7 +30,7 @@ class DetailTourismActivity : AppCompatActivity() {
 
     var favID: Long = 0
     var userFavTourismID: Long = 0
-    var tourismID: Long = 0
+    var tourismID: Int = 0
 
     private val tourismTourismID = mutableListOf <FavoriteTourismID>()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,7 +45,7 @@ class DetailTourismActivity : AppCompatActivity() {
             DetailTourismViewModel::class.java)
 
         userID = detailTourismViewModel.getUserID()
-        tourismID = intent.getLongExtra("tourismID", 1)
+        tourismID = intent.getIntExtra("tourismID", 1)
 
         toggleButton = binding.toggleFavorite
         toggleButton.background = getDrawable(R.drawable.icon_favorite_outline)
@@ -71,16 +68,19 @@ class DetailTourismActivity : AppCompatActivity() {
                     binding.tvDetailAddress.text = response.data?.data?.tourismAddress
                     binding.tvTypeTourism.text = response.data?.data?.tourismType
                     binding.tvTourismLocation.text = response.data?.data?.tourismCity
-                    binding.tvDetailTourismDesc.text = response.data?.data?.tourismDescription
-                    binding.tvTourismName.text = response.data?.data?.tourismName
+                    binding.tvDetailTourismDesc.text = response.data?.data?.tourismDescription.toString()
+                    binding.tvTourismName.text = response.data?.data?.tourismName.toString()
                     binding.tvRating.text = response.data?.data?.tourismRating.toString()
-                    binding.tvOpenHour.text = response.data?.data?.openHour
+                    binding.tvOpenHour.text = response.data?.data?.operationalHour.toString()
                     binding.tvDetailTicketPrice.text = response.data?.data?.entryPrice.toString()
 
                     val tourismDescription = response.data?.data?.tourismDescription
                     binding.tvSeeMoreTourismDesc.setOnClickListener {
                         showDialogTourismDesc(tourismDescription)
                     }
+
+                    val link = "$BASE_URL/assets/${response.data?.data?.tourismImage?.id}"
+                    Picasso.get().load(link).into(binding.imageDetailTourism)
 
                     val timeTaken = response.data?.data?.travelingTime
                     val roadCondition = response.data?.data?.roadCondition
@@ -102,8 +102,6 @@ class DetailTourismActivity : AppCompatActivity() {
             }
         }
     }
-
-
     private fun showDialogTourismDesc(desc: String?) {
         val dialog = BottomSheetDialog(this)
 

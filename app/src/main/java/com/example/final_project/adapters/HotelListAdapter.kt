@@ -11,6 +11,8 @@ import com.example.final_project.databinding.ItemFavoriteHotelBinding
 import com.example.final_project.models.hotel.hotelList.HotelList
 import com.example.final_project.ui.activities.detailHotel.DetailHotelActivity
 import com.squareup.picasso.Picasso
+import java.text.NumberFormat
+import java.util.*
 
 class HotelListAdapter: RecyclerView.Adapter<HotelListAdapter.HotelListViewHolder>() {
     inner class HotelListViewHolder(val binding: ItemFavoriteHotelBinding): RecyclerView.ViewHolder(binding.root)
@@ -38,7 +40,12 @@ class HotelListAdapter: RecyclerView.Adapter<HotelListAdapter.HotelListViewHolde
             Picasso.get().load(hotel.hotelImage).into(binding.ivThumbnailHotel)
             binding.tvNameHotel.text = hotel.hotelName
             binding.tvHotelLocation.text = hotel.hotelCity
-            binding.tvHotelPrice.text = hotel.minPrice.toString()
+
+            val formattedPrice: NumberFormat = NumberFormat.getCurrencyInstance()
+            formattedPrice.maximumFractionDigits = 0
+            formattedPrice.currency = Currency.getInstance("IDR")
+
+            binding.tvHotelPrice.text = formattedPrice.format(hotel.minPrice).toString()
             binding.tvRating.text = hotel.hotelRating.toString()
 
             setOnClickListener {
